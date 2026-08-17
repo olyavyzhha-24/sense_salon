@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sense Salon | Luxury Beauty Space</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* БАЗОВІ ЗМІННІ */
+        :root {
+            --black: #111111;
+            --white: #FAFAFA;
+            --pink-accent: #EFC3C5; 
+            
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-bg-hover: rgba(239, 195, 197, 0.45);
+            --glass-blur: blur(16px);
+            --glass-border: rgba(239, 195, 197, 0.5);
+            
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'Inter', sans-serif;
+
+            /* Ефект журнальної плівки (Lifted Blacks) */
+            --img-filter: grayscale(100%) contrast(90%) brightness(115%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+
+        body { background-color: var(--white); color: var(--black); font-family: var(--sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, .serif { font-family: var(--serif); font-weight: 400; line-height: 1.1; }
+        a { text-decoration: none; color: inherit; }
+
+        img, video { display: block; }
+
+        /* СКЛЯНІ КНОПКИ */
+        .btn-glass { display: inline-block; padding: 16px 32px; font-family: var(--sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); color: var(--black); }
+        .hero .btn-glass, .premium-glass-card .btn-glass, .footer-cta .btn-glass { color: var(--white); }
+        .btn-glass:hover { background: var(--glass-bg-hover); border-color: rgba(239, 195, 197, 1); color: var(--black); }
+        .btn-glass:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: 3px; }
+        .skip-link { position: absolute; left: -9999px; top: 12px; z-index: 10000; padding: 10px 18px; background: var(--black); color: var(--white); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .skip-link:focus { left: 12px; }
+
+        /* HEADER */
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; z-index: 999; background: rgba(250, 250, 250, 0.18); backdrop-filter: blur(28px) saturate(1.4); -webkit-backdrop-filter: blur(28px) saturate(1.4); border-bottom: 1px solid rgba(239, 195, 197, 0.25); color: var(--black); }
+        .logo { font-family: var(--serif); font-size: 24px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;}
+        .nav-links { display: flex; gap: 8px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-links a { color: var(--black); padding: 8px 14px; transition: color 0.3s, background 0.3s; }
+        .nav-links a:hover, .nav-links a[aria-current="true"] { color: var(--pink-accent); }
+        .header-controls { display: flex; gap: 30px; align-items: center; }
+        header .btn-glass { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border: 1px solid var(--pink-accent); color: var(--black); }
+        header .btn-glass:hover { background: var(--glass-bg-hover); border-color: var(--pink-accent); color: var(--black); }
+
+        .menu-toggle { display: none; background: none; border: 1px solid rgba(0,0,0,0.15); width: 44px; height: 44px; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; padding: 0; }
+        .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--black); transition: transform 0.3s, opacity 0.3s; }
+        .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        .lang-switch { display: flex; gap: 4px; font-size: 12px; letter-spacing: 1px; }
+        .lang-switch button { background: none; border: none; cursor: pointer; font: inherit; color: var(--black); padding: 6px 8px; transition: color 0.3s, background 0.3s; }
+        .lang-switch button[aria-pressed="true"] { color: var(--pink-accent); font-weight: 500; }
+        .lang-switch button:hover { color: var(--pink-accent); }
+        .lang-divider { color: #ccc; user-select: none; }
+
+        /* HERO SECTION */
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; background: var(--black); }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); opacity: 0.65; z-index: 0; }
+        .hero-content { position: relative; z-index: 10; color: var(--white); display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 0 20px; }
+        .hero h1 { font-size: 5vw; max-width: 900px; color: var(--pink-accent); text-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+        .hero p { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; max-width: 600px; }
+
+        /* PHILOSOPHY */
+        .philosophy { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--black); }
+        .phil-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--black); }
+        .accent-subtitle { color: var(--pink-accent); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-weight: 400; }
+        .accent-line { height: 1px; width: 40px; background-color: var(--pink-accent); display: inline-block; }
+        .phil-text h2 { font-size: 48px; margin-bottom: 30px; }
+        .phil-text p { font-size: 18px; color: #333; max-width: 450px; }
+        .phil-img { width: 100%; min-height: 560px; height: 100%; object-fit: cover; filter: var(--img-filter); }
+
+        /* SERVICES */
+        .section-header { padding: 80px 40px 40px; text-align: center; border-bottom: 1px solid var(--black); }
+        .section-header h2 { font-size: 36px; }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--black); }
+        .service-card { position: relative; height: 600px; border-right: 1px solid var(--black); overflow: hidden; cursor: pointer; display: block; color: inherit; }
+        .service-card:last-child { border-right: none; }
+        .service-img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transition: transform 0.8s ease; }
+        .service-card:hover .service-img { transform: scale(1.05); }
+
+        .glass-panel { position: absolute; bottom: 20px; left: 20px; right: 20px; padding: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); color: var(--white); display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
+        .service-card:hover .glass-panel, .service-card:focus-visible .glass-panel { background: var(--glass-bg-hover); border-color: rgba(239, 195, 197, 1); color: var(--black); }
+        .glass-panel h3 { font-size: 24px; margin: 0; }
+        .glass-panel span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink-accent); transition: color 0.3s; }
+        .service-card:hover .glass-panel span { color: var(--black); }
+
+        /* PORTFOLIO */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 400px; border-bottom: 1px solid var(--black); }
+        .pf-item { position: relative; border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); overflow: hidden; }
+        .pf-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: var(--img-filter); transition: transform 0.8s ease; }
+        .pf-item:hover img { transform: scale(1.04); }
+        .pf-wide { grid-column: span 2; }
+        .pf-tall { grid-row: span 2; }
+
+        /* PREMIUM CARE */
+        .premium { position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; background-color: var(--black); overflow: hidden; }
+        .premium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./images/premium-bg.jpg') center/cover; background-attachment: fixed; filter: var(--img-filter); opacity: 0.6; z-index: 0; }
+        .premium-glass-card { position: relative; z-index: 10; background: rgba(17, 17, 17, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); padding: 80px 60px; text-align: center; color: var(--white); max-width: 700px; }
+        .premium-glass-card h2 { font-size: 42px; margin-bottom: 20px; }
+        .premium-glass-card p { font-size: 16px; margin-bottom: 40px; color: #ddd; }
+
+        /* КОНТАКТИ / ФУТЕР */
+        .contacts { position: relative; z-index: 50; background: var(--white); border-top: 1px solid var(--black); }
+        .contacts-inner { max-width: 1280px; margin: 0 auto; padding: 100px 40px 0; }
+        .contacts-head { max-width: 520px; margin-bottom: 56px; }
+        .contacts-head h2 { font-size: clamp(32px, 4vw, 48px); margin-top: 16px; margin-bottom: 16px; }
+        .contacts-head p { font-size: 16px; color: #444; max-width: 420px; line-height: 1.7; }
+        .contacts-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 72px; border-bottom: 1px solid rgba(0,0,0,0.12); }
+        .contacts-brand h3 { font-family: var(--serif); font-size: 28px; letter-spacing: 1px; margin-bottom: 14px; }
+        .contacts-brand p { font-size: 14px; color: #555; line-height: 1.65; max-width: 280px; margin-bottom: 28px; }
+        .footer-cta { display: inline-flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .footer-cta .btn-glass { padding: 12px 24px; background: var(--black); border-color: var(--black); color: var(--white); }
+        .footer-cta .btn-glass:hover { background: #000; color: var(--white); border-color: var(--pink-accent); }
+        .footer-cta .btn-glass.btn-outline { background: transparent; color: var(--black); border-color: var(--black); }
+        .footer-cta .btn-glass.btn-outline:hover { background: var(--pink-accent); border-color: var(--pink-accent); color: var(--black); }
+
+        .fcol-label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); margin-bottom: 18px; font-weight: 400; }
+        .fcol a, .fcol address, .fcol p { display: block; font-size: 14px; color: #444; margin-bottom: 10px; font-style: normal; line-height: 1.5; }
+        .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
+        .fcol .hours-note { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 0.02em; }
+        .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 0 40px; font-size: 12px; color: #888; letter-spacing: 0.04em; flex-wrap: wrap; }
+        .foot-bottom a { color: #888; transition: color 0.2s; }
+
+        .mobile-nav { display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 998; background: rgba(250, 250, 250, 0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 24px 20px 28px; flex-direction: column; gap: 18px; }
+        .mobile-nav[hidden] { display: none !important; }
+        .mobile-nav:not([hidden]) { display: flex; }
+        .mobile-nav a { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+        /* АДАПТИВНІСТЬ */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 7vw; } .phil-text { padding: 60px 40px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); } .service-card:nth-child(2) { border-right: none; }
+            .service-card:nth-child(1), .service-card:nth-child(2) { border-bottom: 1px solid var(--black); }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); } .pf-wide { grid-column: span 1; } 
+            .contacts-inner { padding: 80px 40px 0; } .contacts-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .premium::before { background-attachment: scroll; }
+        }
+        @media (max-width: 768px) {
+            header { padding: 0 20px; height: 70px; } .nav-links, .lang-switch { display: none; } .menu-toggle { display: flex; } .logo { font-size: 18px; }
+            .hero h1 { font-size: 12vw; } .hero p { font-size: 12px; }
+            .philosophy { grid-template-columns: 1fr; } .phil-text { border-right: none; border-bottom: 1px solid var(--black); padding: 50px 20px; } .phil-text h2 { font-size: 36px; }
+            .services-grid { grid-template-columns: 1fr; } .service-card { height: 450px; border-right: none; border-bottom: 1px solid var(--black); } .service-card:last-child { border-bottom: none; }
+            .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; } .pf-item { border-right: none; } .pf-tall, .pf-wide { grid-row: span 1; grid-column: span 1; }
+            .premium { height: auto; padding: 60px 20px; } .premium-glass-card { padding: 40px 20px; } .premium-glass-card h2 { font-size: 32px; }
+            .contacts-inner { padding: 60px 20px 0; } .contacts-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 48px; }
+            .foot-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#contacts" class="skip-link">Перейти до контактів</a>
+
+    <header>
+        <a href="#" class="logo" aria-label="Sense Salon — на головну">Sense Salon</a>
+        <nav class="nav-links" aria-label="Головна навігація">
+            <a href="#philosophy">Філософія</a>
+            <a href="#services">Напрямки</a>
+            <a href="#portfolio">Портфоліо</a>
+            <a href="#contacts">Контакти</a>
+        </nav>
+        <div class="header-controls">
+            <div class="lang-switch" role="group" aria-label="Мова сайту">
+                <button type="button" aria-pressed="true">UA</button>
+                <span class="lang-divider" aria-hidden="true">|</span>
+                <button type="button" aria-pressed="false">EN</button>
+            </div>
+            <a href="#contacts" class="btn-glass" style="padding: 10px 24px;">Записатися</a>
+            <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Відкрити меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav id="mobile-nav" class="mobile-nav" hidden aria-label="Мобільна навігація">
+        <a href="#philosophy">Філософія</a>
+        <a href="#services">Напрямки</a>
+        <a href="#portfolio">Портфоліо</a>
+        <a href="#contacts">Контакти</a>
+        <a href="#contacts" class="btn-glass" style="text-align:center; margin-top: 8px;">Записатися</a>
+    </nav>
+
+    <main>
+    <section class="hero" aria-label="Головний екран">
+        <!-- ТУТ ВІДЕО -->
+        <video class="hero-bg" src="./images/hero-video.mp4" autoplay loop muted playsinline aria-label="Абстрактна гра світла і тіні"></video>
+        <div class="hero-content">
+            <h1>Догляд, що стає ритуалом.</h1>
+            <p>Ваш індивідуальний план краси у ритмі сучасного життя.</p>
+            <a href="#contacts" class="btn-glass">Розпочати ритуал</a>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <div class="phil-text">
+            <div class="accent-subtitle">
+                <span class="accent-line"></span> Філософія простору
+            </div>
+            <h2>Мистецтво<br>бути собою.</h2>
+            <p>Sense Salon — це більше, ніж разовий візит. Це простір, де ваш персональний майстер веде вас комплексно: від першої глибокої консультації до створення індивідуального плану догляду. Ми адаптуємося під ваш ритм життя, перетворюючи кожну процедуру на медитативний ритуал.</p>
+        </div>
+        <!-- ТУТ ФОТО ФІЛОСОФІЇ -->
+        <img src="./images/philosophy.jpg" alt="Консультація в VIP-зоні салону" class="phil-img">
+    </section>
+
+   <section id="services" class="services">
+        <div class="section-header">
+            <h2>Напрямки</h2>
+        </div>
+        <div class="services-grid">
+            <a href="#contacts" class="service-card" aria-label="Волосся — детальніше">
+                <img src="./images/service-hair.jpg" alt="Процедури для волосся" class="service-img">
+                <div class="glass-panel">
+                    <div style="flex: 1; padding-right: 20px;">
+                        <h3>Волосся</h3>
+                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;">Стрижки, фарбування, <b style="font-weight: inherit; white-space: nowrap;">SPA-догляд</b></p>
+                    </div>
+                    <span aria-hidden="true" style="white-space: nowrap;">Детальніше →</span>
+                </div>
+            </a>
+            <a href="#contacts" class="service-card" aria-label="Нігті — детальніше">
+                <img src="./images/service-nails.jpg" alt="Манікюр" class="service-img">
+                <div class="glass-panel">
+                    <div style="flex: 1; padding-right: 20px;">
+                        <h3>Нігті</h3>
+                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;">Манікюр, педикюр, подологія</p>
+                    </div>
+                    <span aria-hidden="true" style="white-space: nowrap;">Детальніше →</span>
+                </div>
+            </a>
+            <a href="#contacts" class="service-card" aria-label="Обличчя — детальніше">
+                <img src="./images/service-face.jpg" alt="Догляд за обличчям" class="service-img">
+                <div class="glass-panel">
+                    <div style="flex: 1; padding-right: 20px;">
+                        <h3>Обличчя</h3>
+                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;">Косметологія, масаж, апарати</p>
+                    </div>
+                    <span aria-hidden="true" style="white-space: nowrap;">Детальніше →</span>
+                </div>
+            </a>
+            <a href="#contacts" class="service-card" aria-label="Тіло — детальніше">
+                <img src="./images/service-body.jpg" alt="Догляд за тілом" class="service-img">
+                <div class="glass-panel">
+                    <div style="flex: 1; padding-right: 20px;">
+                        <h3>Тіло</h3>
+                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;"><b style="font-weight: inherit; white-space: nowrap;">SPA-ритуали</b>, масаж, контурування</p>
+                    </div>
+                    <span aria-hidden="true" style="white-space: nowrap;">Детальніше →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-header">
+            <h2>Портфоліо</h2>
+        </div>
+        <!-- ОНОВЛЕНА СІТКА ПОРТФОЛІО (6 ФОТО) -->
+        <div class="portfolio-grid">
+            <div class="pf-item pf-wide">
+                <img src="./images/port-wide.jpg" alt="Ритуал краси">
+            </div>
+            <div class="pf-item pf-tall">
+                <img src="./images/port-tall.jpg" alt="Fashion beauty портрет">
+            </div>
+            <div class="pf-item">
+                <img src="./images/port-sq1.jpg" alt="Естетика маски та пензля">
+            </div>
+            <div class="pf-item">
+                <img src="./images/port-sq2.jpg" alt="Дзеркало салону">
+            </div>
+            <div class="pf-item">
+                <img src="./images/port-sq3.jpg" alt="Деталі манікюру">
+            </div>
+            <div class="pf-item">
+                <img src="./images/port-sq4.jpg" alt="Інструменти майстра">
+            </div>
+        </div>
+    </section>
+
+    <section class="premium">
+        <!-- ФОН ДЛЯ ЦІЄЇ СЕКЦІЇ НАЛАШТОВАНИЙ У CSS ВГОРІ (.premium::before) -->
+        <div class="premium-glass-card">
+            <h2>Без компромісів у якості.</h2>
+            <p>Ми відмовилися від конвеєрного підходу на користь абсолютної уваги до деталей. У наших ритуалах використовується лише преміальна професійна косметика, ефективність якої доведена.</p>
+            <a href="#contacts" class="btn-glass">Зв'язатися з консьєржем</a>
+        </div>
+    </section>
+    </main>
+
+    <footer id="contacts" class="contacts">
+        <div class="contacts-inner">
+            <div class="contacts-head">
+                <div class="accent-subtitle"><span class="accent-line"></span> Контакти</div>
+                <h2>Запишіться на консультацію</h2>
+                <p>Залиште заявку — наш консьєрж підбере майстра та зручний час. Відповідаємо протягом години у робочий день.</p>
+            </div>
+
+            <div class="contacts-grid">
+                <div class="contacts-brand">
+                    <h3>Sense Salon</h3>
+                    <p>Преміальний beauty-простір повного циклу. Волосся, нігті, обличчя та тіло — з персональним супроводом.</p>
+                    <div class="footer-cta">
+                        <a href="tel:+380990000000" class="btn-glass">+38 (099) 000 00 00</a>
+                        <a href="mailto:hello@sense-salon.ua" class="btn-glass btn-outline">Написати</a>
+                    </div>
+                </div>
+
+                <div class="fcol">
+                    <span class="fcol-label">Навігація</span>
+                    <a href="#philosophy">Філософія</a>
+                    <a href="#services">Напрямки</a>
+                    <a href="#portfolio">Портфоліо</a>
+                    <a href="#contacts">Записатися</a>
+                </div>
+
+                <div class="fcol">
+                    <span class="fcol-label">Локація</span>
+                    <address>
+                        <a href="https://maps.google.com/?q=вул.+Естетична,+1,+Київ" target="_blank" rel="noopener noreferrer">м. Київ, вул. Естетична, 1</a>
+                    </address>
+                    <p class="hours-note">Пн–Сб · 10:00–20:00</p>
+                    <p class="hours-note">Нд · за записом</p>
+                </div>
+
+                <div class="fcol">
+                    <span class="fcol-label">Соцмережі</span>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://t.me" target="_blank" rel="noopener noreferrer">Telegram</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+            </div>
+
+            <div class="foot-bottom">
+                <span>© 2026 Sense Salon. Усі права захищені.</span>
+                <span>
+                    <a href="#">Політика конфіденційності</a>
+                    <span aria-hidden="true"> · </span>
+                    <a href="#">Умови запису</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var toggle = document.querySelector('.menu-toggle');
+            var mobileNav = document.getElementById('mobile-nav');
+            if (!toggle || !mobileNav) return;
+
+            function setMenu(open) {
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                toggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+                mobileNav.hidden = !open;
+            }
+
+            toggle.addEventListener('click', function () { setMenu(mobileNav.hidden); });
+
+            mobileNav.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () { setMenu(false); });
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !mobileNav.hidden) setMenu(false);
+            });
+        })();
+    </script>
+</body>
+</html>
