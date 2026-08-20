@@ -28,7 +28,7 @@
             --img-filter: grayscale(100%) contrast(85%) brightness(115%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; -webkit-tap-highlight-color: transparent; }
 
         section[id], .contacts[id] { scroll-margin-top: 80px; }
         body { background-color: var(--white); color: var(--black); font-family: var(--sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
@@ -79,6 +79,7 @@
         /* PHILOSOPHY */
         .philosophy { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--black); }
         .phil-text { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--black); }
+        
         /* ГЛОБАЛЬНІ СТИЛІ ТЕКСТУ */
         h2 { font-size: clamp(36px, 4vw, 48px); margin-bottom: 24px; }
         .accent-subtitle { color: var(--pink-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-weight: 400; }
@@ -90,13 +91,6 @@
         .phil-img { width: 100%; min-height: 560px; height: 100%; object-fit: cover; filter: var(--img-filter); }
 
         /* SERVICES */
-        /* ГЛОБАЛЬНІ СТИЛІ ТЕКСТУ */
-        h2 { font-size: clamp(36px, 4vw, 48px); margin-bottom: 24px; }
-        .accent-subtitle { color: var(--pink-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-weight: 400; }
-        .accent-line { height: 1px; width: 40px; background-color: var(--pink-accent); display: inline-block; }
-        
-        .phil-text h2 { margin-bottom: 30px; }
-        .section-header { padding: 80px 40px 40px; text-align: center; border-bottom: 1px solid var(--black); }
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--black); }
         .service-card { position: relative; height: 600px; border-right: 1px solid var(--black); overflow: hidden; cursor: default; display: block; color: inherit; }
         .service-card:last-child { border-right: none; }
@@ -115,32 +109,46 @@
         .service-modal-trigger:hover span { color: var(--pink-accent) !important; }
         .service-modal-trigger:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: 3px; }
 
-        /* МОДАЛЬНЕ ВІКНО НАПРЯМКУ */
-        .service-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; }
+        /* МОДАЛЬНЕ ВІКНО НАПРЯМКУ (КЛАСИЧНИЙ ДИЗАЙН З ПЛАВНОЮ АНІМАЦІЄЮ) */
+        .service-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
         .service-modal-overlay.open { opacity: 1; visibility: visible; }
-        .service-modal { position: relative; background: var(--white); width: 100%; max-width: 960px; max-height: 92vh; overflow: hidden; border: 1px solid var(--black); transform: translateY(30px); transition: transform 0.4s ease; display: flex; flex-direction: column; }
-        .service-modal-overlay.open .service-modal { transform: translateY(0); }
-        .service-modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: var(--black); transition: all 0.3s ease; }
-        .service-modal-close:hover { background: var(--pink-accent); border-color: var(--pink-accent); }
-        .service-modal-panel { display: none; flex-direction: column; overflow: hidden; }
+        
+        .service-modal { position: relative; background: var(--white); width: 100%; max-width: 960px; max-height: 92vh; overflow: hidden; border: 1px solid var(--black); transform: scale(0.96) translateY(20px); opacity: 0; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; display: flex; flex-direction: column; }
+        .service-modal-overlay.open .service-modal { transform: scale(1) translateY(0); opacity: 1; }
+        
+        .service-modal-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: var(--black); transition: all 0.3s ease; border-radius: 50% !important; }
+        .service-modal-close:hover { background: var(--pink-accent); border-color: var(--pink-accent); color: var(--white); transform: rotate(90deg); }
+        
+        .service-modal-panel { display: none; flex-direction: column; height: 100%; overflow: hidden; }
         .service-modal-panel.active { display: flex; }
-        .service-modal-hero { position: relative; height: clamp(120px, 18vh, 200px); overflow: hidden; background: var(--black); flex-shrink: 0; }
+        
+        .service-modal-hero { position: relative; height: clamp(140px, 22vh, 240px); overflow: hidden; background: var(--black); flex-shrink: 0; }
         .service-modal-hero img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); opacity: 0.85; }
-        .service-modal-body { padding: clamp(24px, 3.5vh, 44px) 60px clamp(20px, 3vh, 32px); overflow: hidden; }
-        .service-modal-body h2 { margin-bottom: 12px; font-size: clamp(28px, 3.5vw, 40px); }
-        .service-modal-lede { font-size: 15px; color: #444; max-width: 640px; line-height: 1.6; margin-bottom: clamp(20px, 3vh, 32px); }
-        .service-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
-        .service-modal-col h4 { font-family: var(--sans); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); font-weight: 400; margin-bottom: 14px; }
-        .service-list { list-style: none; }
-        .service-list li { padding: 9px 0; border-bottom: 1px solid rgba(0,0,0,0.1); font-size: 14px; color: #222; line-height: 1.4; }
+        
+        .service-modal-body { padding: clamp(24px, 3.5vh, 44px) 60px clamp(20px, 3vh, 32px); overflow-y: auto; flex-grow: 1; }
+        .service-modal-body h2 { margin-bottom: 12px; font-size: clamp(32px, 4vw, 44px); }
+        .service-modal-lede { font-size: 16px; color: #444; max-width: 640px; line-height: 1.6; margin-bottom: clamp(24px, 3.5vh, 36px); }
+        
+        .service-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 20px; }
+        .service-modal-col h4 { font-family: var(--sans); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); font-weight: 400; margin-bottom: 14px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 8px; }
+        .service-list { list-style: none; padding: 0; margin: 0; }
+        .service-list li { padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 14px; color: #222; line-height: 1.4; display: flex; align-items: flex-start; gap: 10px; }
+        .service-list li::before { content: '—'; color: var(--pink-accent); }
         .service-list li:last-child { border-bottom: none; }
-        .service-modal-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(18px, 2.5vh, 28px) 60px; background: var(--black); color: var(--white); flex-wrap: wrap; flex-shrink: 0; }
-        .service-modal-cta p { font-family: var(--serif); font-size: 20px; margin: 0; letter-spacing: 0; }
-        .service-modal-cta-btn { padding: 14px 30px; color: var(--white); border-color: rgba(255,255,255,0.5); }
-        .service-modal-cta-btn:hover { color: var(--black); }
+        
+        .service-modal-cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(18px, 2.5vh, 28px) 60px; background: var(--black); color: var(--white); flex-wrap: wrap; flex-shrink: 0; border-top: 1px solid var(--black); }
+        .service-modal-cta p { font-family: var(--serif); font-size: 24px; margin: 0; letter-spacing: 0; }
+        .service-modal-cta-btn { padding: 14px 30px; background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); transition: all 0.3s ease; }
+        .service-modal-cta-btn:hover { background: var(--white); color: var(--black); border-color: var(--white); }
 
         /* МОДАЛЬНЕ ВІКНО "ЗАЛИШИТИ ЗАЯВКУ" */
-        .contact-modal { max-width: 560px; max-height: 94vh; }
+        .contact-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; overflow: hidden; }
+        .contact-modal-overlay.open { opacity: 1; visibility: visible; }
+        .contact-modal { background: var(--white); width: 100%; max-width: 560px; max-height: 94vh; overflow: hidden; border: 1px solid var(--black); transform: translateY(30px); transition: transform 0.4s ease; display: flex; flex-direction: column; position: relative; }
+        .contact-modal-overlay.open .contact-modal { transform: translateY(0); }
+        .contact-modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: var(--black); transition: all 0.3s ease; }
+        .contact-modal-close:hover { background: var(--pink-accent); border-color: var(--pink-accent); }
+
         .contact-modal-body { padding: clamp(40px, 6vh, 56px) 48px clamp(32px, 5vh, 44px); overflow-y: auto; }
         .contact-modal-body h2 { margin-bottom: 10px; font-size: clamp(28px, 3.5vw, 36px); }
 
@@ -169,7 +177,11 @@
         .contact-success .btn-glass:hover { background: transparent; color: var(--black); border-color: var(--pink-accent); }
 
         /* МОДАЛЬНЕ ВІКНО ЮРИДИЧНИХ ДОКУМЕНТІВ */
-        .legal-modal { max-width: 720px; max-height: 86vh; }
+        .legal-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; }
+        .legal-modal-overlay.open { opacity: 1; visibility: visible; }
+        .legal-modal { background: var(--white); width: 100%; max-width: 720px; max-height: 86vh; overflow: hidden; border: 1px solid var(--black); transform: translateY(30px); transition: transform 0.4s ease; display: flex; flex-direction: column; position: relative; }
+        .legal-modal-overlay.open .legal-modal { transform: translateY(0); }
+        
         .legal-modal-body { padding: clamp(40px, 6vh, 56px) 56px clamp(40px, 6vh, 56px); overflow-y: auto; max-height: 86vh; }
         .legal-panel { display: none; }
         .legal-panel.active { display: block; }
@@ -178,10 +190,10 @@
         .legal-panel h4 { font-family: var(--sans); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--pink-accent); font-weight: 500; margin: 30px 0 12px; }
         .legal-panel h4:first-of-type { margin-top: 0; }
         .legal-panel p { font-size: 15px; line-height: 1.75; color: #333; }
-        .legal-list { list-style: none; margin-top: 4px; }
-        .legal-list li { position: relative; padding: 8px 0 8px 18px; font-size: 15px; line-height: 1.6; color: #333; border-bottom: 1px solid rgba(0,0,0,0.08); }
-        .legal-list li:last-child { border-bottom: none; }
-        .legal-list li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--pink-accent); }
+        .legal-list-doc { list-style: none; margin-top: 4px; padding: 0; }
+        .legal-list-doc li { position: relative; padding: 8px 0 8px 18px; font-size: 15px; line-height: 1.6; color: #333; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .legal-list-doc li:last-child { border-bottom: none; }
+        .legal-list-doc li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--pink-accent); }
 
         /* ІНТЕРАКТИВНИЙ ШОУКЕЙС (ПОРТФОЛІО + ЕКСПЕРТИ) */
         .showcase-section { display: flex; min-height: 90vh; border-bottom: 1px solid var(--black); background: var(--white); overflow: hidden; }
@@ -197,7 +209,7 @@
         .showcase-content.active { opacity: 1; visibility: visible; z-index: 10; }
         
        /* Міні-сітка для Портфоліо */
-        #content-portfolio { padding: 0; } /* Прибираємо білі відступи */
+        #content-portfolio { padding: 0; } 
         .portfolio-grid-mini { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); width: 100%; height: 100%; gap: 1px; background-color: var(--black); }
         .portfolio-grid-mini .pf-item { background-color: var(--white); position: relative; overflow: hidden; }
         .portfolio-grid-mini .pf-wide { grid-column: span 2; }
@@ -212,13 +224,13 @@
         .team-slide img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transform: scale(1.06); transition: transform 2.8s ease; }
         .team-slide.active img { transform: scale(1); }
         
-        /* Плашка з ім'ям експерта (glass, фото + інфо знизу) */
+        /* Плашка з ім'ям експерта */
         .team-slide-info { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); padding: 20px; z-index: 10; display: flex; flex-direction: column; color: var(--white); opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
         .team-slide.active .team-slide-info { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
         .team-slide-info h3 { font-size: 24px; margin-bottom: 4px; color: var(--white); letter-spacing: 0; }
         .team-slide-info span { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--pink-accent); }
         
-        /* Рожева стрілочка (glass effect) */
+        /* Рожева стрілочка */
         .slider-next-btn { position: absolute; top: 50%; right: -40px; transform: translateY(-50%); width: 80px; height: 80px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 50% !important; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease; z-index: 20; color: var(--pink-accent); outline: none; }
         .slider-next-btn:hover { background: var(--glass-bg-hover); border-color: rgba(239, 195, 197, 1); color: var(--black); }
         .slider-next-btn svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -247,7 +259,6 @@
         .contacts-head h2 { margin-top: 16px; margin-bottom: 16px; }
         .contacts-head p { font-size: 16px; color: #444; max-width: 420px; line-height: 1.7; }
         
-        /* Виправляємо сітку, щоб вона ідеально заповнювала весь простір */
         .contacts-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 72px; border-bottom: 1px solid rgba(0,0,0,0.12); width: 100%; }
         
         .contacts-brand p { font-size: 14px; color: #555; line-height: 1.65; max-width: 320px; margin-bottom: 32px; }
@@ -257,7 +268,6 @@
         .footer-cta .btn-glass.btn-outline { background: transparent; color: var(--black); border-color: var(--black); }
         .footer-cta .btn-glass.btn-outline:hover { background: var(--pink-accent); border-color: var(--pink-accent); color: var(--black); }
 
-        /* Додаємо рожеву рисочку до всіх заголовків колонок */
         .fcol-label { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); margin-bottom: 24px; font-weight: 400; }
         .fcol-label .accent-line { width: 24px; height: 1px; background-color: var(--pink-accent); display: inline-block; flex-shrink: 0; }
         
@@ -269,7 +279,7 @@
         .legal-trigger { background: none; border: none; padding: 0; margin: 0; font: inherit; color: #888; cursor: pointer; transition: color 0.2s; }
         .legal-trigger:hover, .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
 
-        /* АДАПТИВНІСТЬ */
+        /* АДАПТИВНІСТЬ (ТУТ ВСІ ВИПРАВЛЕННЯ ДЛЯ ТЕЛЕФОНУ) */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 7vw; } .phil-text { padding: 60px 40px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); } .service-card:nth-child(2) { border-right: none; }
@@ -279,43 +289,61 @@
             .premium::before { background-attachment: scroll; }
         }
         @media (max-width: 768px) {
-            header { padding: 0 20px; height: 70px; } .nav-links, header .lang-switch { display: none; } .menu-toggle { display: flex; } .logo { font-size: 13px; }
+            /* 1. ХЕДЕР (Тільки лого і бургер) */
+            header { padding: 0 20px; height: 70px; } 
+            .nav-links, header .lang-switch, header .btn-glass { display: none !important; } 
+            .menu-toggle { display: flex; } 
+            .logo img { height: 40px; }
+            
             .hero h1 { font-size: 12vw; } .hero p { font-size: 12px; }
             .philosophy { grid-template-columns: 1fr; } .phil-text { border-right: none; border-bottom: 1px solid var(--black); padding: 50px 20px; } .phil-text h2 { font-size: 36px; }
             .services-grid { grid-template-columns: 1fr; } .service-card { height: 450px; border-right: none; border-bottom: 1px solid var(--black); } .service-card:last-child { border-bottom: none; }
-            .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; } .pf-item { border-right: none; } .pf-tall, .pf-wide { grid-row: span 1; grid-column: span 1; }
-            .team-grid { grid-template-columns: 1fr; }
-            .team-card { border-right: none; border-bottom: 1px solid var(--black); }
+            
+            /* 2. ШОУКЕЙС (Спочатку кнопки меню, потім контент) */
+            .showcase-section { flex-direction: column; }
+            .showcase-right { order: -1; padding: 40px 20px 20px; border-left: none; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+            .showcase-menu-btn { font-size: clamp(32px, 9vw, 42px); word-break: break-word; }
+            .showcase-left { padding: 0 20px 40px; min-height: 480px; border-right: none; }
+            .portfolio-grid-mini { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: 200px; }
+            .portfolio-grid-mini .pf-wide { grid-column: span 1; }
+            .team-slider-wrap { max-width: 100%; margin: 0 auto; aspect-ratio: auto; height: 400px; }
+            .slider-next-btn { right: 10px; width: 50px; height: 50px; background: rgba(255,255,255,0.9); }
+            .team-slide-info { bottom: 10px; left: 10px; right: 10px; padding: 16px; border: none; }
+            .team-slide-info h3 { font-size: 20px; }
+
+            /* 3. МОДАЛЬНЕ ВІКНО НАПРЯМКУ (Виправляємо CTA) */
+            .service-modal-overlay { padding: 20px; }
+            .service-modal { flex-direction: column; height: auto; max-height: 85vh; border-radius: 0; }
+            .service-modal-panel { flex-direction: column; height: auto; max-height: 85vh; }
+            .service-modal-hero { width: 100%; height: 160px; flex-shrink: 0; }
+            
+            /* Прокручується ТІЛЬКИ текст, а кнопка CTA завжди висить знизу */
+            .service-modal-body { padding: 24px 20px; overflow-y: auto; flex-grow: 1; }
+            .service-modal-body h2 { font-size: 28px; margin-bottom: 12px; }
+            .service-modal-lede { font-size: 14px; margin-bottom: 24px; }
+            .service-modal-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 20px; }
+            .service-modal-col h4 { font-size: 10px; margin-bottom: 8px; }
+            .service-list li { padding: 6px 0; font-size: 13px; }
+            
+            .service-modal-cta { padding: 20px; flex-shrink: 0; flex-direction: column; align-items: flex-start; gap: 12px; background: var(--black); border-top: 1px solid var(--black); }
+            .service-modal-cta p { font-size: 18px; }
+            .service-modal-cta-btn { width: 100%; text-align: center; padding: 12px; font-size: 11px; }
+
+            .premium { height: auto; padding: 60px 20px; } .premium-glass-card { padding: 40px 20px; } .premium-glass-card h2 { font-size: 32px; }
+            .reviews-carousel { padding-bottom: 20px; }
             .review-card { width: 320px; padding: 40px 24px; }
             .review-text { font-size: 16px; }
-            .premium { height: auto; padding: 60px 20px; } .premium-glass-card { padding: 40px 20px; } .premium-glass-card h2 { font-size: 32px; }
             .contacts-inner { padding: 60px 20px 0; } .contacts-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 48px; }
             .foot-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 32px; }
-            .showcase-section { flex-direction: column; }
-            .showcase-right { padding: 40px 20px; border-left: none; border-bottom: 1px solid var(--black); text-align: left; }
-            .showcase-menu-btn { font-size: 42px; }
-            .showcase-left { padding: 40px 20px; min-height: 550px; border-right: none; }
-            .portfolio-grid-mini { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: 220px; }
-            .portfolio-grid-mini .pf-wide { grid-column: span 1; }
-            .team-slider-wrap { max-width: 280px; margin: 0 auto; }
-            .slider-next-btn { right: -20px; width: 60px; height: 60px; }
-            .team-slide-info { bottom: -20px; left: -10px; padding: 16px 20px; }
-            .service-modal-overlay { padding: 0; }
-            .service-modal { max-height: 100vh; height: 100%; }
-            .service-modal-hero { height: clamp(90px, 14vh, 140px); }
-            .service-modal-body { padding: 20px 20px 16px; }
-            .service-modal-body h2 { font-size: 24px; }
-            .service-modal-lede { font-size: 13px; margin-bottom: 16px; }
-            .service-modal-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-            .service-modal-col h4 { font-size: 10px; margin-bottom: 8px; }
-            .service-list li { padding: 6px 0; font-size: 12px; }
-            .service-modal-cta { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
-            .service-modal-cta p { font-size: 16px; }
-            .service-modal-cta-btn { padding: 10px 20px; font-size: 11px; }
-            .contact-modal-body { padding: 32px 22px 24px; }
+
+            /* ІНШІ МОДАЛКИ */
+            .contact-modal-overlay { padding: 20px; }
+            .contact-modal { max-height: 85vh; height: auto; }
+            .contact-modal-body { padding: 32px 22px 24px; overflow-y: auto; }
             .contact-toggle-btn { font-size: 10px; padding: 12px 6px; }
-            .legal-modal-body { padding: 32px 22px; max-height: 100vh; }
-            .legal-modal { max-height: 100vh; }
+            .legal-modal-overlay { padding: 20px; }
+            .legal-modal { max-height: 85vh; height: auto; }
+            .legal-modal-body { padding: 32px 22px; overflow-y: auto; }
         }
     </style>
 </head>
@@ -811,8 +839,8 @@
     </div>
 
     <!-- МОДАЛЬНЕ ВІКНО ЮРИДИЧНИХ ДОКУМЕНТІВ -->
-    <div class="service-modal-overlay legal-modal-overlay" id="legal-modal-overlay">
-        <div class="service-modal legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+    <div class="legal-modal-overlay" id="legal-modal-overlay">
+        <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
             <button type="button" class="service-modal-close" id="legal-modal-close" aria-label="Закрити" data-i18n-en-aria-label="Close">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
             </button>
@@ -828,7 +856,7 @@
                     <p data-i18n-en="Sense Salon respects the privacy of every client. This policy explains what data we collect when you book a treatment or interact with our site, and how we use it.">Sense Salon поважає приватність кожного клієнта. Ця політика пояснює, які дані ми збираємо під час запису на процедуру та взаємодії з сайтом, і як ми їх використовуємо.</p>
 
                     <h4 data-i18n-en="2. What Data We Collect">2. Які дані ми збираємо</h4>
-                    <ul class="legal-list">
+                    <ul class="legal-list-doc">
                         <li data-i18n-en="Name and contact details &mdash; phone, email or messenger">Ім'я та контактні дані — телефон, email або месенджер</li>
                         <li data-i18n-en="Preferences regarding treatments and chosen specialist">Побажання щодо процедур та обраного майстра</li>
                         <li data-i18n-en="Technical site-visit data (non-identifying)">Технічні дані відвідування сайту (без ідентифікації особи)</li>
@@ -854,7 +882,7 @@
                     <p data-i18n-en="Bookings can be made via the website, by phone, or through a messenger. After your request, our concierge confirms the date, time and specialist within one business day.">Запис здійснюється через сайт, за телефоном або через месенджер. Після заявки консьєрж підтверджує дату, час і майстра протягом робочого дня.</p>
 
                     <h4 data-i18n-en="2. Cancellation &amp; Rescheduling">2. Скасування та перенесення</h4>
-                    <ul class="legal-list">
+                    <ul class="legal-list-doc">
                         <li data-i18n-en="Free cancellation or rescheduling &mdash; up to 24 hours before your visit">Безкоштовне скасування або перенесення — не пізніше ніж за 24 години до візиту</li>
                         <li data-i18n-en="Cancellation within 24 hours &mdash; a partial deposit charge may apply">Скасування пізніше 24 годин — попередження про можливий часток передоплати</li>
                         <li data-i18n-en="One free reschedule is available with no extra conditions">Перенесення дати можливе один раз без додаткових умов</li>
@@ -924,7 +952,6 @@
                 document.querySelectorAll('#lang-ua-desktop, #lang-ua-mobile').forEach(function (b) { b.setAttribute('aria-pressed', String(lang === 'uk')); });
                 document.querySelectorAll('#lang-en-desktop, #lang-en-mobile').forEach(function (b) { b.setAttribute('aria-pressed', String(lang === 'en')); });
 
-                // Оновити динамічний лейбл поля контакту в попапі заявки, якщо він відкритий/існує
                 if (typeof window.__refreshContactMode === 'function') window.__refreshContactMode();
                 if (typeof window.__refreshMenuToggleLabel === 'function') window.__refreshMenuToggleLabel();
             }
@@ -1001,24 +1028,21 @@
                 if (e.key === 'Escape' && !mobileNav.hidden) setMenu(false);
             });
         })();
-        // Логіка для перемикання меню (Портфоліо / Експерти)
+        
         const showcaseBtns = document.querySelectorAll('.showcase-menu-btn');
         const showcaseContents = document.querySelectorAll('.showcase-content');
 
         showcaseBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
-                // Забираємо клас active у всіх кнопок і блоків
                 showcaseBtns.forEach(b => b.classList.remove('active'));
                 showcaseContents.forEach(c => c.classList.remove('active'));
                 
-                // Додаємо клас active натиснутій кнопці та її контенту
                 btn.classList.add('active');
                 const targetId = btn.getAttribute('data-target');
                 document.getElementById(targetId).classList.add('active');
             });
         });
 
-        // Логіка для слайдера Експертів (Рожева стрілочка)
         const nextBtn = document.querySelector('.slider-next-btn');
         const slides = document.querySelectorAll('.team-slide');
         let currentSlide = 0;
@@ -1030,7 +1054,7 @@
                 slides[currentSlide].classList.add('active');
             });
         }
-        // Логіка модального вікна "Напрямки"
+        
         (function () {
             var overlay = document.getElementById('service-modal-overlay');
             if (!overlay) return;
@@ -1061,7 +1085,7 @@
                 link.addEventListener('click', closeModal);
             });
         })();
-        // Логіка попапу "Залишити заявку" (футер)
+        
         (function () {
             var overlay = document.getElementById('contact-modal-overlay');
             if (!overlay) return;
@@ -1131,7 +1155,6 @@
             successCloseBtn.addEventListener('click', closeModal);
         })();
 
-        // Логіка попапу юридичних документів (футер)
         (function () {
             var overlay = document.getElementById('legal-modal-overlay');
             if (!overlay) return;
