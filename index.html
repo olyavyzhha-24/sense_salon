@@ -11,8 +11,6 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Sense Salon | Luxury Beauty Space">
     <meta property="og:description" content="Преміальний beauty-простір повного циклу. Волосся, нігті, обличчя та тіло — з персональним супроводом майстра.">
-    <!-- TODO: додати og:image 1200x630px (наразі немає готового файлу-превью) -->
-    <!-- <meta property="og:image" content="https://olyavyzhha-24.github.io/sense_salon/images/og-preview.jpg"> -->
     <meta property="og:url" content="https://olyavyzhha-24.github.io/sense_salon/">
     <meta property="og:locale" content="uk_UA">
 
@@ -20,15 +18,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sense Salon | Luxury Beauty Space">
     <meta name="twitter:description" content="Преміальний beauty-простір повного циклу. Волосся, нігті, обличчя та тіло — з персональним супроводом майстра.">
-    <!-- TODO: додати twitter:image 1200x630px (той самий файл, що й og:image) -->
 
     <!-- Favicon -->
-    <!-- TODO: замінити на реальний файл фавіконки (наразі посилання-заглушка, файлу ще немає) -->
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
-
-    <!-- GA4: вставити тег тут -->
-    <!-- Meta Pixel: вставити тут -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +48,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; -webkit-tap-highlight-color: transparent; }
 
-        section[id], .contacts[id] { scroll-margin-top: 80px; }
+        section[id], .contacts[id], #booking-form { scroll-margin-top: 100px; }
         body { background-color: var(--white); color: var(--black); font-family: var(--sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, .serif { font-family: var(--serif); font-weight: 400; line-height: 1.1; letter-spacing: -2px; }
         h1 { letter-spacing: -5px; }
@@ -87,6 +80,13 @@
         .lang-divider { color: #ccc; user-select: none; }
         header .btn-glass, .footer-cta .btn-glass.btn-outline { background: rgba(239, 195, 197, 0.35); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--pink-accent); color: var(--black); }
         header .btn-glass:hover, .footer-cta .btn-glass.btn-outline:hover { background: rgba(239, 195, 197, 0.65); border-color: rgba(239, 195, 197, 1); color: var(--black); }
+
+        .btn-glass-pink-fill { background: rgba(239, 195, 197, 0.35); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--pink-accent); color: var(--black); }
+        .hero .btn-glass-pink-fill { color: var(--black); }
+        .btn-glass-pink-fill:hover { background: rgba(239, 195, 197, 0.65); border-color: rgba(239, 195, 197, 1); color: var(--black); }
+
+        .btn-glass-dark-fill { background: rgba(17, 17, 17, 0.85) !important; backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-color: var(--black) !important; color: var(--white) !important; }
+        .btn-glass-dark-fill:hover { background: rgba(17, 17, 17, 0.85) !important; border-color: var(--pink-accent) !important; color: var(--pink-accent) !important; }
 
         .menu-toggle { display: none; background: none; border: 1px solid rgba(0,0,0,0.15); width: 44px; height: 44px; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; padding: 0; }
         .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--black); transition: transform 0.3s, opacity 0.3s; }
@@ -122,19 +122,18 @@
         .service-img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transition: transform 0.8s ease; }
         .service-card:hover .service-img { transform: scale(1.05); }
 
-        .glass-panel { position: absolute; bottom: 20px; left: 20px; right: 20px; padding: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); color: var(--white); display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; }
+        .glass-panel { position: absolute; bottom: 20px; left: 20px; right: 20px; height: 88px; padding: 0 20px; background: rgba(20, 20, 20, 0.55); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); color: var(--white); display: flex; justify-content: space-between; align-items: center; transition: all 0.4s ease; cursor: pointer; }
+        .glass-panel-text { flex: 1; padding-right: 20px; min-width: 0; }
+        .glass-panel-desc { font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .service-card:hover .glass-panel, .service-card:focus-within .glass-panel { background: var(--glass-bg-hover); border-color: rgba(239, 195, 197, 1); color: var(--black); }
         .glass-panel h3 { font-size: 24px; margin: 0; letter-spacing: 0; }
-        .glass-panel span { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink-accent); transition: color 0.3s; }
-        .service-card:hover .glass-panel span { color: var(--black); }
 
-        .service-modal-trigger { background: none; border: none; padding: 0; margin: 0; font: inherit; cursor: pointer; color: var(--pink-accent); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; transition: color 0.3s; }
+        .service-modal-trigger { font: inherit; color: var(--pink-accent); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; transition: color 0.3s; display: inline-flex; align-items: center; gap: 6px; border: none; background: transparent; padding: 0; cursor: pointer; }
         .service-card:hover .service-modal-trigger { color: var(--black); }
-        .service-modal-trigger:hover { color: var(--pink-accent) !important; }
-        .service-modal-trigger:hover span { color: var(--pink-accent) !important; }
-        .service-modal-trigger:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: 3px; }
+        .glass-panel:hover .service-modal-trigger, .glass-panel:hover .service-modal-trigger span { color: var(--pink-accent) !important; }
+        .glass-panel:focus-visible { outline: 2px solid var(--pink-accent); outline-offset: -2px; }
 
-        /* МОДАЛЬНЕ ВІКНО НАПРЯМКУ (КЛАСИЧНИЙ ДИЗАЙН З ПЛАВНОЮ АНІМАЦІЄЮ) */
+        /* МОДАЛЬНЕ ВІКНО НАПРЯМКУ (ПЛАВНА АНІМАЦІЯ) */
         .service-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
         .service-modal-overlay.open { opacity: 1; visibility: visible; }
         
@@ -165,21 +164,105 @@
         .service-modal-cta p { font-family: var(--serif); font-size: 24px; margin: 0; letter-spacing: 0; }
         .service-modal-cta-btn { color: var(--white); }
 
-        /* МОДАЛЬНЕ ВІКНО "ЗАЛИШИТИ ЗАЯВКУ" */
-        .contact-modal-overlay { position: fixed; inset: 0; background: rgba(17, 17, 17, 0.78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 40px; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; overflow: hidden; }
-        .contact-modal-overlay.open { opacity: 1; visibility: visible; }
-        .contact-modal { background: var(--white); width: 100%; max-width: 560px; max-height: 94vh; overflow: hidden; border: 1px solid var(--black); transform: translateY(30px); transition: transform 0.4s ease; display: flex; flex-direction: column; position: relative; }
-        .contact-modal-overlay.open .contact-modal { transform: translateY(0); }
-        .contact-modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; background: rgba(255,255,255,0.5); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; color: var(--black); transition: all 0.3s ease; }
-        .contact-modal-close:hover { background: var(--pink-accent); border-color: var(--pink-accent); }
+        /* ІНТЕРАКТИВНИЙ ШОУКЕЙС (ЕКСПЕРТ + ЙОГО ПОРТФОЛІО, СИНХРОНІЗОВАНІ) */
+        .showcase-section { display: flex; min-height: 90vh; border-bottom: 1px solid var(--black); background: var(--white); overflow: hidden; }
+        
+        .showcase-right { flex: 1; position: relative; background: var(--black); overflow: hidden; }
+        .showcase-left { flex: 1; position: relative; border-right: 1px solid var(--black); display: flex; align-items: center; justify-content: center; padding: 60px; }
+        
+        .expert-portfolio-grid { display: grid; gap: 1px; background-color: var(--black); grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+        .expert-portfolio-grid .pf-item { background-color: var(--white); position: relative; overflow: hidden; }
+        .expert-portfolio-grid .pf-wide { grid-column: span 2; }
+        .expert-portfolio-grid .pf-tall { grid-row: span 2; }
+        .expert-portfolio-grid img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transform: scale(1.15); transition: transform 0.8s ease; }
+        .expert-portfolio-grid .pf-item:hover img { transform: scale(1.22); }
 
-        .contact-modal-body { padding: clamp(40px, 6vh, 56px) 48px clamp(32px, 5vh, 44px); overflow-y: auto; }
-        .contact-modal-body h2 { margin-bottom: 10px; font-size: clamp(28px, 3.5vw, 36px); }
+        .expert-portfolio-slider { position: relative; width: 100%; height: 100%; }
+        .expert-portfolio-slide { display: none; width: 100%; height: 100%; }
+        .expert-portfolio-slide.active { display: block; animation: portfolioFadeIn 0.6s ease; }
+        .portfolio-mobile-label { display: none; }
+        .mobile-only-arrow { display: none; }
+        @keyframes portfolioFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        .contact-toggle { display: flex; border: 1px solid var(--black); margin-bottom: 32px; }
-        .contact-toggle-btn { flex: 1; background: transparent; border: none; padding: 14px 10px; font-family: var(--sans); font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; color: var(--black); }
-        .contact-toggle-btn + .contact-toggle-btn { border-left: 1px solid var(--black); }
-        .contact-toggle-btn.active { background: var(--pink-accent); color: var(--black); }
+        .expert-panel { display: flex; flex-direction: column; align-items: center; gap: 22px; width: 100%; }
+        .team-slider-wrap { position: relative; width: 100%; max-width: 380px; aspect-ratio: 3/4; }
+        
+        .mobile-expert-cta { display: none; }
+        .desktop-expert-cta { display: block; width: 100%; max-width: 380px; text-align: center; }
+
+        .team-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transform: scale(1.04); transition: opacity 1.6s ease, transform 2s ease, visibility 0s linear 1.6s; overflow: hidden; }
+        .team-slide.active { opacity: 1; visibility: visible; transform: scale(1); z-index: 5; transition: opacity 1.6s ease, transform 2s ease; }
+        .team-slide img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transform: scale(1.06); transition: transform 2.8s ease; }
+        .team-slide.active img { transform: scale(1); }
+        
+        .team-slide-info { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(20, 20, 20, 0.55); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); padding: 20px; z-index: 10; display: flex; flex-direction: column; color: var(--white); opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .team-slide.active .team-slide-info { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+        .team-slide-info h3 { font-size: 24px; margin-bottom: 4px; color: var(--white); letter-spacing: 0; }
+        .team-slide-info span { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--pink-accent); }
+        
+        .slider-next-btn, .slider-prev-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; background: transparent; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.4s ease, transform 0.4s ease; z-index: 20; color: var(--black); outline: none; }
+        .slider-next-btn { right: -68px; }
+        .slider-prev-btn { left: -68px; }
+        .slider-next-btn:hover { color: var(--pink-accent); transform: translateY(-50%) translateX(4px); }
+        .slider-prev-btn:hover { color: var(--pink-accent); transform: translateY(-50%) translateX(-4px); }
+        .slider-next-btn svg, .slider-prev-btn svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .inline-arrow { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vertical-align: -2px; margin-left: 2px; }
+
+        /* ВРАЖЕННЯ (Відгуки) */
+        .reviews-carousel { overflow: hidden; border-bottom: 1px solid var(--black); }
+        .reviews-track { display: flex; width: max-content; animation: scroll-reviews 50s linear infinite; }
+        .reviews-track:hover { animation-play-state: paused; }
+        .review-card { width: 480px; flex-shrink: 0; padding: 60px 50px; border-right: 1px solid var(--black); display: flex; flex-direction: column; justify-content: space-between; }
+        @keyframes scroll-reviews { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .review-text { font-family: var(--serif); font-size: 20px; line-height: 1.5; margin-bottom: 30px; font-style: italic; color: #222; letter-spacing: 0; }
+        .review-author { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; font-weight: 400; color: var(--black); }
+        .review-meta { display: flex; align-items: center; gap: 16px; }
+        .review-avatar { width: 52px; height: 52px; object-fit: cover; filter: var(--img-filter); flex-shrink: 0; }
+        .review-meta-text { display: flex; flex-direction: column; gap: 6px; }
+        .review-stars { display: flex; gap: 3px; }
+        .star-icon { width: 12px; height: 12px; fill: var(--pink-accent); }
+
+        /* PREMIUM CARE */
+        .premium { position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; background-color: var(--black); overflow: hidden; }
+        .premium::before { content: ''; position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; background: url('./images/premium-bg.webp') center/cover; background-attachment: fixed; filter: var(--img-filter); opacity: 0.6; z-index: 0; }
+        .premium-glass-card { position: relative; z-index: 10; background: rgba(17, 17, 17, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); padding: 80px 60px; text-align: center; color: var(--white); max-width: 700px; }
+        .premium-glass-card h2 { margin-bottom: 20px; }
+        .premium-glass-card p { font-size: 16px; margin-bottom: 40px; color: #ddd; }
+
+        /* КОНТАКТИ ФОРМА */
+        .contacts { position: relative; z-index: 50; background: var(--white); border-top: 1px solid var(--black); }
+        .contacts-inner { max-width: 1280px; margin: 0 auto; padding: 100px 40px 0; }
+        .contacts-head { max-width: 520px; }
+        .contacts-head h2 { margin-top: 16px; margin-bottom: 16px; }
+        .contacts-head p { font-size: 16px; color: #444; max-width: 420px; line-height: 1.7; }
+        
+        .contacts-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; padding-bottom: 72px; border-bottom: 1px solid rgba(0,0,0,0.12); width: 100%; align-items: start; }
+        .contacts-left { display: flex; flex-direction: column; gap: 56px; }
+        .contacts-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+        .contacts-brand p { font-size: 14px; color: #555; line-height: 1.65; max-width: 320px; margin-bottom: 32px; }
+        .footer-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .footer-cta .btn-glass:not(.btn-outline) { background: rgba(17, 17, 17, 0.85); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-color: var(--black); color: var(--white); }
+        .footer-cta .btn-glass:not(.btn-outline):hover { background: rgba(17, 17, 17, 0.85); border-color: var(--pink-accent); color: var(--pink-accent); }
+
+        .contacts-form-panel { background: rgba(239, 195, 197, 0.07); border: 1px solid var(--black); padding: clamp(32px, 3.5vw, 44px) clamp(28px, 3vw, 40px) 36px; }
+        .contacts-form-panel h3 { margin-bottom: 10px; font-size: clamp(24px, 2.2vw, 30px); letter-spacing: 0; }
+        .contacts-form-panel > p { font-size: 14px; color: #555; line-height: 1.6; max-width: 420px; margin-bottom: 28px; }
+
+        .fcol-label { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); margin-bottom: 24px; font-weight: 400; }
+        .fcol-label .accent-line { width: 24px; height: 1px; background-color: var(--pink-accent); display: inline-block; flex-shrink: 0; }
+        
+        .fcol a, .fcol address, .fcol p { display: block; font-size: 14px; color: #444; margin-bottom: 14px; font-style: normal; line-height: 1.5; text-decoration: none; }
+        .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
+        .fcol .hours-note { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 0.02em; }
+        .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 32px 0 40px; font-size: 12px; color: #888; letter-spacing: 0.04em; flex-wrap: wrap; }
+        .foot-bottom a { color: #888; transition: color 0.2s; }
+        .legal-trigger { background: none; border: none; padding: 0; margin: 0; font: inherit; color: #888; cursor: pointer; transition: color 0.2s; }
+        .legal-trigger:hover, .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
+
+        .contact-toggle { display: flex; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
+        .contact-toggle-btn { flex: 1; background: transparent; border: 1px solid rgba(0,0,0,0.25); padding: 14px 10px; font-family: var(--sans); font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; color: var(--black); }
+        .contact-toggle-btn.active { background: var(--pink-accent); border-color: var(--pink-accent); color: var(--black); }
 
         .contact-field { margin-bottom: 22px; }
         .contact-field label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
@@ -195,8 +278,8 @@
         .contact-submit-btn { width: 100%; text-align: center; background: var(--pink-accent); color: var(--black); border-color: var(--pink-accent); margin-top: 8px; }
         .contact-submit-btn:hover { background: rgba(239, 195, 197, 0.5); border-color: var(--pink-accent); color: var(--black); }
 
-        .contact-success { text-align: center; padding: 12px 0; }
-        .contact-success h2 { margin-bottom: 14px; }
+        .contact-success { text-align: center; padding: 24px 0; }
+        .contact-success h3 { margin-bottom: 14px; font-size: clamp(24px, 2.2vw, 30px); }
         .contact-success .btn-glass { margin-top: 24px; background: var(--pink-accent); color: var(--black); border-color: var(--pink-accent); }
         .contact-success .btn-glass:hover { background: rgba(239, 195, 197, 0.5); border-color: var(--pink-accent); color: var(--black); }
 
@@ -219,146 +302,54 @@
         .legal-list-doc li:last-child { border-bottom: none; }
         .legal-list-doc li::before { content: ''; position: absolute; left: 0; top: 17px; width: 6px; height: 1px; background: var(--pink-accent); }
 
-        /* ІНТЕРАКТИВНИЙ ШОУКЕЙС (ЕКСПЕРТ + ЙОГО ПОРТФОЛІО, СИНХРОНІЗОВАНІ) */
-        .showcase-section { display: flex; min-height: 90vh; border-bottom: 1px solid var(--black); background: var(--white); overflow: hidden; }
-        
-        /* Права частина (Портфоліо поточного експерта) */
-        .showcase-right { flex: 1; position: relative; background: var(--black); overflow: hidden; }
-
-        /* Ліва частина (Слайдер експертів) */
-        .showcase-left { flex: 1; position: relative; border-right: 1px solid var(--black); display: flex; align-items: center; justify-content: center; padding: 60px; }
-        
-       /* Міні-сітка портфоліо (спільна для повної секції та для картки експерта) */
-        .portfolio-grid-mini, .expert-portfolio-grid { display: grid; gap: 1px; background-color: var(--black); }
-        .portfolio-grid-mini { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); width: 100%; height: 100%; }
-        .expert-portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-        .portfolio-grid-mini .pf-item, .expert-portfolio-grid .pf-item { background-color: var(--white); position: relative; overflow: hidden; }
-        .portfolio-grid-mini .pf-wide, .expert-portfolio-grid .pf-wide { grid-column: span 2; }
-        .portfolio-grid-mini .pf-tall, .expert-portfolio-grid .pf-tall { grid-row: span 2; }
-        .portfolio-grid-mini img, .expert-portfolio-grid img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transform: scale(1.15); transition: transform 0.8s ease; }
-        .portfolio-grid-mini .pf-item:hover img, .expert-portfolio-grid .pf-item:hover img { transform: scale(1.22); }
-
-        /* Слайди з портфоліо кожного експерта (перемикаються разом зі слайдером зліва) */
-        .expert-portfolio-slider { position: relative; width: 100%; height: 100%; }
-        .expert-portfolio-slide { display: none; width: 100%; height: 100%; }
-        .expert-portfolio-slide.active { display: block; animation: portfolioFadeIn 0.6s ease; }
-        .portfolio-mobile-label { display: none; }
-        .mobile-only-arrow { display: none; }
-        @keyframes portfolioFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Слайдер для Експертів */
-        .team-slider-wrap { position: relative; width: 100%; max-width: 380px; aspect-ratio: 3/4; }
-        .team-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transform: scale(1.04); transition: opacity 1.6s ease, transform 2s ease, visibility 0s linear 1.6s; overflow: hidden; }
-        .team-slide.active { opacity: 1; visibility: visible; transform: scale(1); z-index: 5; transition: opacity 1.6s ease, transform 2s ease; }
-        .team-slide img { width: 100%; height: 100%; object-fit: cover; filter: var(--img-filter); transform: scale(1.06); transition: transform 2.8s ease; }
-        .team-slide.active img { transform: scale(1); }
-        
-        /* Плашка з ім'ям експерта */
-        .team-slide-info { position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); padding: 20px; z-index: 10; display: flex; flex-direction: column; color: var(--white); opacity: 0; transform: translateY(18px); transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
-        .team-slide.active .team-slide-info { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-        .team-slide-info h3 { font-size: 24px; margin-bottom: 4px; color: var(--white); letter-spacing: 0; }
-        .team-slide-info span { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--pink-accent); }
-        
-        /* Стрілочки (попередній / наступний експерт) — у стилі стрілки "Детальніше" */
-        .slider-next-btn, .slider-prev-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: transparent; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.4s ease, transform 0.4s ease; z-index: 20; color: var(--pink-accent); outline: none; }
-        .slider-next-btn { right: -44px; }
-        .slider-prev-btn { left: -44px; }
-        .slider-next-btn:hover { color: var(--black); transform: translateY(-50%) translateX(4px); }
-        .slider-prev-btn:hover { color: var(--black); transform: translateY(-50%) translateX(-4px); }
-        .slider-next-btn svg, .slider-prev-btn svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-        .inline-arrow { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vertical-align: -2px; margin-left: 2px; }
-
-        /* ВРАЖЕННЯ (Відгуки) */
-        .reviews-carousel { overflow: hidden; border-bottom: 1px solid var(--black); }
-        .reviews-track { display: flex; width: max-content; animation: scroll-reviews 50s linear infinite; }
-        .reviews-track:hover { animation-play-state: paused; }
-        .review-card { width: 480px; flex-shrink: 0; padding: 60px 50px; border-right: 1px solid var(--black); display: flex; flex-direction: column; justify-content: space-between; }
-        @keyframes scroll-reviews { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .review-text { font-family: var(--serif); font-size: 20px; line-height: 1.5; margin-bottom: 30px; font-style: italic; color: #222; letter-spacing: 0; }
-        .review-author { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; font-weight: 400; color: var(--black); }
-
-        /* PREMIUM CARE */
-        .premium { position: relative; height: 80vh; display: flex; align-items: center; justify-content: center; background-color: var(--black); overflow: hidden; }
-        .premium::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./images/premium-bg.webp') center/cover; background-attachment: fixed; filter: var(--img-filter); opacity: 0.6; z-index: 0; }
-        .premium-glass-card { position: relative; z-index: 10; background: rgba(17, 17, 17, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--glass-border); padding: 80px 60px; text-align: center; color: var(--white); max-width: 700px; }
-        .premium-glass-card h2 { margin-bottom: 20px; }
-        .premium-glass-card p { font-size: 16px; margin-bottom: 40px; color: #ddd; }
-
-        /* КОНТАКТИ / ФУТЕР */
-        .contacts { position: relative; z-index: 50; background: var(--white); border-top: 1px solid var(--black); }
-        .contacts-inner { max-width: 1280px; margin: 0 auto; padding: 100px 40px 0; }
-        .contacts-head { max-width: 520px; margin-bottom: 56px; }
-        .contacts-head h2 { margin-top: 16px; margin-bottom: 16px; }
-        .contacts-head p { font-size: 16px; color: #444; max-width: 420px; line-height: 1.7; }
-        
-        .contacts-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 72px; border-bottom: 1px solid rgba(0,0,0,0.12); width: 100%; }
-        
-        .contacts-brand p { font-size: 14px; color: #555; line-height: 1.65; max-width: 320px; margin-bottom: 32px; }
-        .footer-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .footer-cta .btn-glass:not(.btn-outline) { background: rgba(17, 17, 17, 0.85); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-color: var(--black); color: var(--white); }
-        .footer-cta .btn-glass:not(.btn-outline):hover { background: rgba(17, 17, 17, 0.85); border-color: var(--pink-accent); color: var(--pink-accent); }
-
-        .fcol-label { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink-accent); margin-bottom: 24px; font-weight: 400; }
-        .fcol-label .accent-line { width: 24px; height: 1px; background-color: var(--pink-accent); display: inline-block; flex-shrink: 0; }
-        
-        .fcol a, .fcol address, .fcol p { display: block; font-size: 14px; color: #444; margin-bottom: 14px; font-style: normal; line-height: 1.5; text-decoration: none; }
-        .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
-        .fcol .hours-note { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 0.02em; }
-        .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 32px 0 40px; font-size: 12px; color: #888; letter-spacing: 0.04em; flex-wrap: wrap; }
-        .foot-bottom a { color: #888; transition: color 0.2s; }
-        .legal-trigger { background: none; border: none; padding: 0; margin: 0; font: inherit; color: #888; cursor: pointer; transition: color 0.2s; }
-        .legal-trigger:hover, .fcol a:hover, .foot-bottom a:hover { color: var(--black); }
-
-        /* АДАПТИВНІСТЬ (ТУТ ВСІ ВИПРАВЛЕННЯ ДЛЯ ТЕЛЕФОНУ) */
+        /* АДАПТИВНІСТЬ */
         @media (max-width: 1024px) {
             .hero h1 { font-size: 7vw; } .phil-text { padding: 60px 40px; }
             .services-grid { grid-template-columns: repeat(2, 1fr); } .service-card:nth-child(2) { border-right: none; }
             .service-card:nth-child(1), .service-card:nth-child(2) { border-bottom: 1px solid var(--black); }
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); } .pf-wide { grid-column: span 1; } 
-            .contacts-inner { padding: 80px 40px 0; } .contacts-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-            .premium::before { background-attachment: scroll; }
+            .contacts-inner { padding: 80px 40px 0; } .contacts-grid { grid-template-columns: 1fr 1fr; gap: 40px; } .contacts-links { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-            /* ХЕДЕР (ховаємо зайве, залишаємо Лого і Бургер) */
+            /* ХЕДЕР ТА БУРГЕР */
             header { padding: 0 20px; height: 70px; } 
             .nav-links, header .lang-switch, header .btn-glass { display: none !important; } 
             .menu-toggle { display: flex; } 
-            .logo { font-size: 13px; }
+            .logo img { height: 40px; }
             
-            /* БУРГЕР-МЕНЮ (Тільки CTA і Мови) */
             .mobile-nav { position: fixed; top: 70px; left: 0; width: 100%; height: auto; background: var(--white); padding: 40px 20px; flex-direction: column; align-items: center; gap: 30px; border-bottom: 1px solid var(--black); box-shadow: 0 20px 40px rgba(0,0,0,0.08); z-index: 998; }
-            
-            /* Лагодимо відкриття/закриття на хрестик */
             .mobile-nav[hidden] { display: none !important; }
             .mobile-nav:not([hidden]) { display: flex !important; }
-            
-            /* Ховаємо навігаційні посилання (Філософія, Напрямки і тд) */
             .mobile-nav a:not(.btn-glass) { display: none !important; }
-            
-            /* Стилізуємо кнопку Записатися та Мови */
-            .mobile-nav .btn-glass { width: 100%; max-width: 320px; background: var(--pink-accent); border-color: var(--pink-accent); color: var(--black); padding: 16px; margin: 0 !important; font-size: 13px; text-align: center; }
+            .mobile-nav .btn-glass { width: 100%; max-width: 320px; background: var(--black); color: var(--white); padding: 16px; margin: 0 !important; font-size: 13px; text-align: center; }
             .mobile-nav .lang-switch { margin: 0 !important; padding: 0 !important; display: flex; justify-content: center; gap: 12px; font-size: 14px; }
 
-            /* ЕКСПЕРТИ / ЇХ ПОРТФОЛІО (на мобільному — лише фото портфоліо, без фото майстра) */
-            .showcase-section { flex-direction: column; }
+            /* БАЗОВІ СЕКЦІЇ */
+            .hero h1 { font-size: 12vw; } .hero p { font-size: 12px; }
+            .philosophy { grid-template-columns: 1fr; } .phil-text { border-right: none; border-bottom: 1px solid var(--black); padding: 50px 20px; } .phil-text h2 { font-size: 36px; }
+            .services-grid { grid-template-columns: 1fr; } .service-card { height: 450px; border-right: none; border-bottom: 1px solid var(--black); } .service-card:last-child { border-bottom: none; }
+            .glass-panel { height: 80px; }
+            
+            /* ЕКСПЕРТИ / ПОРТФОЛІО (З мобільною CTA) */
+            .showcase-section { flex-direction: column; min-height: auto; }
             .showcase-left { display: none; }
-            .showcase-right { border-left: none; height: 420px; position: relative; }
+            .desktop-expert-cta { display: none !important; }
+            .mobile-expert-cta { display: block; margin-top: 24px; width: 100%; text-align: center; }
+            
+            .showcase-right { flex: none; border-left: none; height: auto; position: relative; padding-bottom: 40px; background: var(--white); }
+            .expert-portfolio-slider { height: 420px; }
+            .expert-portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: 210px; }
+            .expert-portfolio-grid .pf-wide { grid-column: span 2; }
 
-            .portfolio-grid-mini { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: 220px; }
-            .portfolio-grid-mini .pf-wide { grid-column: span 1; }
-
-            /* Плашка з іменем/роллю поверх сітки фото */
             .portfolio-mobile-label { display: block; position: absolute; top: 0; left: 0; right: 0; z-index: 15; padding: 18px 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent); }
             .portfolio-mobile-label .portfolio-eyebrow { color: var(--pink-accent); font-family: var(--sans); font-size: 10px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 4px; }
             .portfolio-mobile-label h3 { color: var(--white); font-family: var(--serif); font-size: 22px; letter-spacing: 0; margin: 0; }
             .portfolio-mobile-label .portfolio-role { color: rgba(255,255,255,0.8); font-family: var(--sans); font-size: 10.5px; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-top: 2px; }
 
-            /* Мобільні стрілочки по боках сітки фото */
-            .mobile-only-arrow { display: flex; position: absolute; top: 50%; transform: translateY(-50%); z-index: 15; width: 44px; height: 44px; color: var(--white); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
+            .mobile-only-arrow { display: flex; position: absolute; top: 210px; transform: translateY(-50%); z-index: 15; width: 44px; height: 44px; color: var(--white); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
             .mobile-only-arrow.slider-prev-btn { left: 6px; }
             .mobile-only-arrow.slider-next-btn { right: 6px; }
 
-            /* МОДАЛКА НАПРЯМКІВ (по центру з відступами) */
+            /* МОДАЛЬНЕ ВІКНО НАПРЯМКУ */
             .service-modal-overlay { padding: 20px; }
             .service-modal { height: auto; max-height: 85vh; border-radius: 0; }
             .service-modal-panel { flex-direction: column; }
@@ -373,17 +364,14 @@
             .service-modal-cta p { font-size: 20px; }
             .service-modal-cta-btn { width: 100%; text-align: center; padding: 12px; font-size: 11px; }
 
-            /* БАЗОВІ АДАПТАЦІЇ (лишаємо як було) */
-            .hero h1 { font-size: 12vw; } .hero p { font-size: 12px; }
-            .philosophy { grid-template-columns: 1fr; } .phil-text { border-right: none; border-bottom: 1px solid var(--black); padding: 50px 20px; } .phil-text h2 { font-size: 36px; }
-            .services-grid { grid-template-columns: 1fr; } .service-card { height: 450px; border-right: none; border-bottom: 1px solid var(--black); } .service-card:last-child { border-bottom: none; }
-            .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; } .pf-item { border-right: none; } .pf-tall, .pf-wide { grid-row: span 1; grid-column: span 1; }
-            .team-grid { grid-template-columns: 1fr; } .team-card { border-right: none; border-bottom: 1px solid var(--black); }
-            .review-card { width: 320px; padding: 40px 24px; } .review-text { font-size: 16px; }
+            /* ІНШІ БЛОКИ */
             .premium { height: auto; padding: 60px 20px; } .premium-glass-card { padding: 40px 20px; } .premium-glass-card h2 { font-size: 32px; }
-            .contacts-inner { padding: 60px 20px 0; } .contacts-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 48px; }
+            .reviews-carousel { padding-bottom: 20px; }
+            .review-card { width: 320px; padding: 40px 24px; } .review-text { font-size: 16px; }
+            .contacts-inner { padding: 60px 20px 0; } .contacts-grid { grid-template-columns: 1fr; gap: 48px; padding-bottom: 48px; }
+            .contacts-left { display: contents; } .contacts-head { order: 1; } .contacts-brand { order: 2; }
+            .contacts-form-panel { order: 3; padding: 28px 20px 28px; } .contacts-links { order: 4; grid-template-columns: 1fr 1fr; gap: 28px; }
             .foot-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 32px; }
-            .contact-modal-body { padding: 32px 22px 24px; } .contact-toggle-btn { font-size: 10px; padding: 12px 6px; }
             .legal-modal-overlay { padding: 20px; } .legal-modal { max-height: 85vh; height: auto; } .legal-modal-body { padding: 32px 22px; }
         }
     </style>
@@ -409,7 +397,7 @@
                 <span class="lang-divider" aria-hidden="true">|</span>
                 <button type="button" id="lang-en-desktop" aria-pressed="false">EN</button>
             </div>
-            <a href="#contacts" class="btn-glass" data-i18n-en="Book Now">Записатися</a>
+            <a href="#booking-form" class="btn-glass btn-glass-dark-fill" data-i18n-en="Book Now">Записатися</a>
             <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Відкрити меню">
                 <span></span><span></span><span></span>
             </button>
@@ -417,13 +405,8 @@
     </header>
 
     <nav id="mobile-nav" class="mobile-nav" hidden aria-label="Мобільна навігація" data-i18n-en-aria-label="Mobile navigation">
-        <a href="#philosophy" data-i18n-en="Philosophy">Філософія</a>
-        <a href="#services" data-i18n-en="Treatments">Напрямки</a>
-        <a href="#portfolio" data-i18n-en="Portfolio">Портфоліо</a>
-        <a href="#reviews" data-i18n-en="Impressions">Враження</a>
-        <a href="#contacts" data-i18n-en="Contacts">Контакти</a>
-        <a href="#contacts" class="btn-glass" style="text-align:center; margin-top: 8px;" data-i18n-en="Book Now">Записатися</a>
-        <div class="lang-switch" role="group" aria-label="Мова сайту" data-i18n-en-aria-label="Site language" style="justify-content: center; margin-top: 20px;">
+        <a href="#booking-form" class="btn-glass" data-i18n-en="Book Now">Записатися</a>
+        <div class="lang-switch" role="group" aria-label="Мова сайту" data-i18n-en-aria-label="Site language">
             <button type="button" id="lang-ua-mobile" aria-pressed="true">UA</button>
             <span class="lang-divider" aria-hidden="true">|</span>
             <button type="button" id="lang-en-mobile" aria-pressed="false">EN</button>
@@ -432,17 +415,15 @@
 
     <main>
     <div id="naizd-container" style="position: relative;">
-        <!-- Hero закріплюється на місці (sticky) -->
         <section class="hero" aria-label="Головний екран" style="position: sticky; top: 0; height: 100vh; z-index: 1;" data-i18n-en-aria-label="Hero section">
             <video class="hero-bg" src="./images/hero-video.mp4" autoplay loop muted playsinline aria-label="Абстрактна гра світла і тіні" data-i18n-en-aria-label="Abstract play of light and shadow"></video>
             <div class="hero-content">
                 <h1 data-i18n-en="Care that becomes a ritual.">Догляд, що стає ритуалом.</h1>
                 <p data-i18n-en="Your personal beauty plan, in step with modern life.">Ваш індивідуальний план краси у ритмі сучасного життя.</p>
-                <a href="#contacts" class="btn-glass" data-i18n-en="Begin the Ritual">Розпочати ритуал</a>
+                <a href="#booking-form" class="btn-glass btn-glass-pink-fill" data-i18n-en="Begin the Ritual">Розпочати ритуал</a>
             </div>
         </section>
 
-        <!-- Філософія просто наїжджає поверх нього при звичайному скролі -->
         <section id="philosophy" class="philosophy" style="position: relative; z-index: 2; border-radius: 48px 48px 0 0; background-color: var(--white); border-top: 1px solid rgba(0,0,0,0.1);">
             <div class="phil-text">
                 <div class="accent-subtitle">
@@ -463,42 +444,42 @@
         <div class="services-grid">
             <div class="service-card">
                 <img loading="lazy" decoding="async" src="./images/service-hair.webp" width="1536" height="2752" alt="Процедури для волосся" class="service-img">
-                <div class="glass-panel">
-                    <div style="flex: 1; padding-right: 20px;">
+                <div class="glass-panel" data-service="hair" role="button" tabindex="0" aria-haspopup="dialog">
+                    <div class="glass-panel-text">
                         <h3 data-i18n-en="Hair">Волосся</h3>
-                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;" data-i18n-en='Haircuts, coloring, toning, <b style="font-weight: inherit; white-space: nowrap;">spa care</b>'>Стрижки, фарбування, тонування, <b style="font-weight: inherit; white-space: nowrap;">SPA-догляд</b></p>
+                        <p class="glass-panel-desc" data-i18n-en="Haircuts, coloring, SPA care">Стрижки, фарбування, SPA-догляд</p>
                     </div>
-                    <button type="button" class="service-modal-trigger" data-service="hair" aria-haspopup="dialog"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                    <span class="service-modal-trigger"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </div>
             <div class="service-card">
                 <img loading="lazy" decoding="async" src="./images/service-nails.webp" width="1536" height="2752" alt="Манікюр" class="service-img">
-                <div class="glass-panel">
-                    <div style="flex: 1; padding-right: 20px;">
+                <div class="glass-panel" data-service="nails" role="button" tabindex="0" aria-haspopup="dialog">
+                    <div class="glass-panel-text">
                         <h3 data-i18n-en="Nails">Нігті</h3>
-                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;" data-i18n-en="Manicure, pedicure, podiatry, nail art">Манікюр, педикюр, подологія, дизайн нігтів</p>
+                        <p class="glass-panel-desc" data-i18n-en="Manicure, pedicure, nail art">Манікюр, педикюр, дизайн нігтів</p>
                     </div>
-                    <button type="button" class="service-modal-trigger" data-service="nails" aria-haspopup="dialog"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                    <span class="service-modal-trigger"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </div>
             <div class="service-card">
                 <img loading="lazy" decoding="async" src="./images/service-face.webp" width="1536" height="2752" alt="Догляд за обличчям" class="service-img">
-                <div class="glass-panel">
-                    <div style="flex: 1; padding-right: 20px;">
+                <div class="glass-panel" data-service="face" role="button" tabindex="0" aria-haspopup="dialog">
+                    <div class="glass-panel-text">
                         <h3 data-i18n-en="Face">Обличчя</h3>
-                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;" data-i18n-en="Cosmetology, massage, devices">Косметологія, масаж, апарати</p>
+                        <p class="glass-panel-desc" data-i18n-en="Cosmetology, massage, devices">Косметологія, масаж, апарати</p>
                     </div>
-                    <button type="button" class="service-modal-trigger" data-service="face" aria-haspopup="dialog"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                    <span class="service-modal-trigger"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </div>
             <div class="service-card">
                 <img loading="lazy" decoding="async" src="./images/service-body.webp" width="1536" height="2752" alt="Догляд за тілом" class="service-img">
-                <div class="glass-panel">
-                    <div style="flex: 1; padding-right: 20px;">
+                <div class="glass-panel" data-service="body" role="button" tabindex="0" aria-haspopup="dialog">
+                    <div class="glass-panel-text">
                         <h3 data-i18n-en="Body">Тіло</h3>
-                        <p style="font-size: 13px; margin-top: 4px; opacity: 0.8; font-weight: 300; letter-spacing: 0.5px;" data-i18n-en='<b style="font-weight: inherit; white-space: nowrap;">Spa rituals</b>, massage, contouring'><b style="font-weight: inherit; white-space: nowrap;">SPA-ритуали</b>, масаж, контурування</p>
+                        <p class="glass-panel-desc" data-i18n-en="SPA rituals, massage, contouring">SPA-ритуали, масаж, контурування</p>
                     </div>
-                    <button type="button" class="service-modal-trigger" data-service="body" aria-haspopup="dialog"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                    <span class="service-modal-trigger"><span data-i18n-en="Details">Детальніше</span> <svg class="inline-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                 </div>
             </div>
         </div>
@@ -540,7 +521,7 @@
                 </div>
                 <div class="service-modal-cta">
                     <p data-i18n-en="Ready for a new look?">Готові оновити образ?</p>
-                    <a href="#contacts" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
+                    <a href="#booking-form" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
                 </div>
             </div>
 
@@ -573,7 +554,7 @@
                 </div>
                 <div class="service-modal-cta">
                     <p data-i18n-en="Ready for a fresh manicure?">Готові оновити манікюр?</p>
-                    <a href="#contacts" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
+                    <a href="#booking-form" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
                 </div>
             </div>
 
@@ -606,7 +587,7 @@
                 </div>
                 <div class="service-modal-cta">
                     <p data-i18n-en="Ready to start your skincare journey?">Готові розпочати догляд?</p>
-                    <a href="#contacts" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
+                    <a href="#booking-form" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
                 </div>
             </div>
 
@@ -639,29 +620,26 @@
                 </div>
                 <div class="service-modal-cta">
                     <p data-i18n-en="Ready to begin?">Готові розпочати?</p>
-                    <a href="#contacts" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
+                    <a href="#booking-form" class="btn-glass service-modal-cta-btn" data-i18n-en="Book a Consultation">Записатися на консультацію</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- БЛОК-ПАУЗА (Щоб роз'єднати фотографії) -->
+    <!-- БЛОК-ПАУЗА -->
     <div class="section-header">
-        <h2 data-i18n-en="Portfolio">Портфоліо</h2>
+        <h2 data-i18n-en="The Experience of Space">Досвід простору</h2>
     </div>
 
-    <!-- ІНТЕРАКТИВНИЙ ШОУКЕЙС: ЕКСПЕРТ ЗЛІВА, ЙОГО ВЛАСНЕ ПОРТФОЛІО СПРАВА (СИНХРОНІЗОВАНО) -->
+    <!-- ІНТЕРАКТИВНИЙ ШОУКЕЙС -->
     <section id="portfolio" class="showcase-section">
         <div class="showcase-left">
+            <div class="expert-panel">
             <div class="team-slider-wrap">
-                <!-- Стрілочка "назад" -->
                 <button class="slider-prev-btn" aria-label="Попередній експерт" data-i18n-en-aria-label="Previous expert">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 </button>
 
-                <!-- Слайд 1 -->
                 <div class="team-slide active">
                     <img loading="lazy" decoding="async" src="./images/team-1.webp" width="1792" height="2400" alt="Анна Шин" data-i18n-en-alt="Anna Shin">
                     <div class="team-slide-info">
@@ -669,7 +647,6 @@
                         <span>Art Director / Hair</span>
                     </div>
                 </div>
-                <!-- Слайд 2 -->
                 <div class="team-slide">
                     <img loading="lazy" decoding="async" src="./images/team-2.webp" width="1792" height="2400" alt="Вікторія Рім" data-i18n-en-alt="Victoria Rim">
                     <div class="team-slide-info">
@@ -677,7 +654,6 @@
                         <span>Top Stylist / Nails</span>
                     </div>
                 </div>
-                <!-- Слайд 3 -->
                 <div class="team-slide">
                     <img loading="lazy" decoding="async" src="./images/team-3.webp" width="1792" height="2400" alt="Марта Коен" data-i18n-en-alt="Marta Cohen">
                     <div class="team-slide-info">
@@ -685,7 +661,6 @@
                         <span>Cosmetologist / Face</span>
                     </div>
                 </div>
-                <!-- Слайд 4 -->
                 <div class="team-slide">
                     <img loading="lazy" decoding="async" src="./images/team-4.webp" width="1792" height="2400" alt="Максим Дорн" data-i18n-en-alt="Maxim Dorn">
                     <div class="team-slide-info">
@@ -693,7 +668,6 @@
                         <span>Art Director / Hair</span>
                     </div>
                 </div>
-                <!-- Слайд 5 -->
                 <div class="team-slide">
                     <img loading="lazy" decoding="async" src="./images/team-5.webp" width="1792" height="2400" alt="Софія Ланг" data-i18n-en-alt="Sofia Lang">
                     <div class="team-slide-info">
@@ -701,7 +675,6 @@
                         <span>Top Stylist / Nails</span>
                     </div>
                 </div>
-                <!-- Слайд 6 -->
                 <div class="team-slide">
                     <img loading="lazy" decoding="async" src="./images/team-6.webp" width="1792" height="2400" alt="Ігор Крас" data-i18n-en-alt="Igor Kras">
                     <div class="team-slide-info">
@@ -710,25 +683,21 @@
                     </div>
                 </div>
 
-                <!-- Стрілочка "вперед" -->
                 <button class="slider-next-btn" aria-label="Наступний експерт" data-i18n-en-aria-label="Next expert">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
+            </div>
+
+            <a href="#booking-form" id="expert-cta-btn" class="btn-glass btn-glass-pink-fill expert-cta desktop-expert-cta" data-expert-note="Хочу записатися до Анни Шин — Art Director / Hair" data-i18n-en="Book with Anna">Записатися до Анни</a>
             </div>
         </div>
 
-        <!-- ПОРТФОЛІО ПОТОЧНОГО ЕКСПЕРТА (індекс слайду синхронізований зі слайдером зліва) -->
         <div class="showcase-right">
-            <!-- Мобільні стрілочки (з боків сітки фото) -->
             <button class="slider-prev-btn mobile-only-arrow" aria-label="Попередній експерт" data-i18n-en-aria-label="Previous expert">
-                <svg viewBox="0 0 24 24">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </button>
+            
             <div class="expert-portfolio-slider">
-                <!-- Портфоліо: Анна Шин -->
                 <div class="expert-portfolio-slide active">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -741,7 +710,6 @@
                         <div class="pf-item"><img loading="lazy" decoding="async" src="./images/port-anna-3.webp" width="2048" height="2048" alt="Робота Анни Шин 3" data-i18n-en-alt="Anna Shin's work 3"></div>
                     </div>
                 </div>
-                <!-- Портфоліо: Вікторія Рім -->
                 <div class="expert-portfolio-slide">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -754,7 +722,6 @@
                         <div class="pf-item"><img loading="lazy" decoding="async" src="./images/port-victoria-3.webp" width="2048" height="2048" alt="Робота Вікторії Рім 3" data-i18n-en-alt="Victoria Rim's work 3"></div>
                     </div>
                 </div>
-                <!-- Портфоліо: Марта Коен -->
                 <div class="expert-portfolio-slide">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -767,7 +734,6 @@
                         <div class="pf-item"><img loading="lazy" decoding="async" src="./images/port-marta-3.webp" width="2048" height="2048" alt="Робота Марти Коен 3" data-i18n-en-alt="Marta Cohen's work 3"></div>
                     </div>
                 </div>
-                <!-- Портфоліо: Максим Дорн -->
                 <div class="expert-portfolio-slide">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -780,7 +746,6 @@
                         <div class="pf-item"><img loading="lazy" decoding="async" src="./images/port-maxim-3.webp" width="2048" height="2048" alt="Робота Максима Дорна 3" data-i18n-en-alt="Maxim Dorn's work 3"></div>
                     </div>
                 </div>
-                <!-- Портфоліо: Софія Ланг -->
                 <div class="expert-portfolio-slide">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -793,7 +758,6 @@
                         <div class="pf-item"><img loading="lazy" decoding="async" src="./images/port-sofia-3.webp" width="2048" height="2048" alt="Робота Софії Ланг 3" data-i18n-en-alt="Sofia Lang's work 3"></div>
                     </div>
                 </div>
-                <!-- Портфоліо: Ігор Крас -->
                 <div class="expert-portfolio-slide">
                     <div class="portfolio-mobile-label">
                         <span class="portfolio-eyebrow" data-i18n-en="Portfolio">Портфоліо</span>
@@ -807,46 +771,46 @@
                     </div>
                 </div>
             </div>
-            <!-- Мобільна стрілочка "вперед" -->
             <button class="slider-next-btn mobile-only-arrow" aria-label="Наступний експерт" data-i18n-en-aria-label="Next expert">
-                <svg viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
+            
+            <a href="#booking-form" id="expert-cta-btn-mobile" class="btn-glass btn-glass-pink-fill expert-cta mobile-expert-cta" data-expert-note="Хочу записатися до Анни Шин — Art Director / Hair" data-i18n-en="Book with Anna">Записатися до Анни</a>
+
         </div>
     </section>
 
     <section class="premium">
-        <!-- ФОН ДЛЯ ЦІЄЇ СЕКЦІЇ НАЛАШТОВАНИЙ У CSS ВГОРІ (.premium::before) -->
         <div class="premium-glass-card">
             <h2 data-i18n-en="No compromise on quality.">Без компромісів у якості.</h2>
             <p data-i18n-en="We&#39;ve moved away from the conveyor-belt approach in favor of absolute attention to detail. Our rituals use only premium professional cosmetics with proven efficacy.">Ми відмовилися від конвеєрного підходу на користь абсолютної уваги до деталей. У наших ритуалах використовується лише преміальна професійна косметика, ефективність якої доведена.</p>
-            <a href="#contacts" class="btn-glass" data-i18n-en="Contact Our Concierge">Зв'язатися з консьєржем</a>
+            <a href="#booking-form" class="btn-glass" data-i18n-en="Contact Our Concierge">Зв'язатися з консьєржем</a>
         </div>
     </section>
+
     <section id="reviews" class="reviews-section">
         <div class="section-header">
             <h2 data-i18n-en="Impressions">Враження</h2>
         </div>
        <div class="reviews-carousel">
     <div class="reviews-track">
-        <div class="review-card"><p class="review-text" data-i18n-en="It&#39;s not just a salon, it&#39;s where I reset completely. Every detail — from the scent in the air to the therapist&#39;s touch — is considered down to the last degree.">«Це не просто салон, це місце, де я обнуляюся. Кожна деталь — від аромату в повітрі до дотиків майстра — продумана до абсолюту.»</p><div class="review-author" data-i18n-en="— Olena V.">— Олена В.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="I trust my hair only to the experts at Sense. They don&#39;t just listen to what you want — they seem to read your inner state.">«Довіряю своє волосся тільки експертам Sense. Вони не просто чують побажання, вони ніби зчитують твій внутрішній стан.»</p><div class="review-author" data-i18n-en="— Maria S.">— Марія С.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="I came for a consultation and stayed for good. A personal care plan was exactly what I&#39;d been missing.">«Прийшла на консультацію і залишилась назавжди. Персональний план догляду — це саме те, чого мені бракувало.»</p><div class="review-author" data-i18n-en="— Anastasia K.">— Анастасія К.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="The atmosphere rivals the world&#39;s finest hotels. And the results always exceed expectations.">«Атмосфера, як у найкращих готелях світу. І результат завжди перевищує очікування.»</p><div class="review-author" data-i18n-en="— Yulia P.">— Юлія П.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="The best thing I&#39;ve done for myself this past year. Every visit is a small celebration.">«Найкраще, що я зробила для себе за останній рік. Кожен візит — маленьке свято.»</p><div class="review-author" data-i18n-en="— Victoria N.">— Вікторія Н.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="The specialists here are true professionals who love what they do. You can feel it in every detail.">«Майстри тут справжні професіонали, які люблять свою справу. Це відчувається в кожній деталі.»</p><div class="review-author" data-i18n-en="— Daryna L.">— Дарина Л.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="I never thought a salon visit could feel this therapeutic.">«Ніколи не думала, що похід у салон може бути таким терапевтичним досвідом.»</p><div class="review-author" data-i18n-en="— Olga M.">— Ольга М.</div></div>
-        <div class="review-card"><p class="review-text" data-i18n-en="Sense Salon changed the way I think about self-care. It&#39;s now the part of my week I look forward to most.">«Sense Salon змінив моє уявлення про догляд за собою. Тепер це частина мого тижня, яку я найбільше чекаю.»</p><div class="review-author" data-i18n-en="— Kateryna R.">— Катерина Р.</div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="It&#39;s not just a salon, it&#39;s where I reset completely. Every detail — from the scent in the air to the therapist&#39;s touch — is considered down to the last degree.">«Це не просто салон, це місце, де я обнуляюся. Кожна деталь — від аромату в повітрі до дотиків майстра — продумана до абсолюту.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-olena.webp" width="200" height="200" alt="Олена В" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Olena V., 29">Олена В., 29</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="I trust my hair only to the experts at Sense. They don&#39;t just listen to what you want — they seem to read your inner state.">«Довіряю своє волосся тільки експертам Sense. Вони не просто чують побажання, вони ніби зчитують твій внутрішній стан.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-maria.webp" width="200" height="200" alt="Марія С" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Maria S., 34">Марія С., 34</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="I came for a consultation and stayed for good. A personal care plan was exactly what I&#39;d been missing.">«Прийшла на консультацію і залишилась назавжди. Персональний план догляду — це саме те, чого мені бракувало.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-anastasia.webp" width="200" height="200" alt="Анастасія К" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Anastasia K., 26">Анастасія К., 26</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="The atmosphere rivals the world&#39;s finest hotels. And the results always exceed expectations.">«Атмосфера, як у найкращих готелях світу. І результат завжди перевищує очікування.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-yulia.webp" width="200" height="200" alt="Юлія П" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Yulia P., 41">Юлія П., 41</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="The best thing I&#39;ve done for myself this past year. Every visit is a small celebration.">«Найкраще, що я зробила для себе за останній рік. Кожен візит — маленьке свято.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-victoria.webp" width="200" height="200" alt="Вікторія Н" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Victoria N., 31">Вікторія Н., 31</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="The specialists here are true professionals who love what they do. You can feel it in every detail.">«Майстри тут справжні професіонали, які люблять свою справу. Це відчувається в кожній деталі.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-daryna.webp" width="200" height="200" alt="Дарина Л" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Daryna L., 37">Дарина Л., 37</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="I never thought a salon visit could feel this therapeutic.">«Ніколи не думала, що похід у салон може бути таким терапевтичним досвідом.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-olga.webp" width="200" height="200" alt="Ольга М" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Olga M., 45">Ольга М., 45</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card"><p class="review-text" data-i18n-en="Sense Salon changed the way I think about self-care. It&#39;s now the part of my week I look forward to most.">«Sense Salon змінив моє уявлення про догляд за собою. Тепер це частина мого тижня, яку я найбільше чекаю.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-kateryna.webp" width="200" height="200" alt="Катерина Р" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Kateryna R., 24">Катерина Р., 24</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
 
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="It&#39;s not just a salon, it&#39;s where I reset completely. Every detail — from the scent in the air to the therapist&#39;s touch — is considered down to the last degree.">«Це не просто салон, це місце, де я обнуляюся. Кожна деталь — від аромату в повітрі до дотиків майстра — продумана до абсолюту.»</p><div class="review-author" data-i18n-en="— Olena V.">— Олена В.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I trust my hair only to the experts at Sense. They don&#39;t just listen to what you want — they seem to read your inner state.">«Довіряю своє волосся тільки експертам Sense. Вони не просто чують побажання, вони ніби зчитують твій внутрішній стан.»</p><div class="review-author" data-i18n-en="— Maria S.">— Марія С.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I came for a consultation and stayed for good. A personal care plan was exactly what I&#39;d been missing.">«Прийшла на консультацію і залишилась назавжди. Персональний план догляду — це саме те, чого мені бракувало.»</p><div class="review-author" data-i18n-en="— Anastasia K.">— Анастасія К.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The atmosphere rivals the world&#39;s finest hotels. And the results always exceed expectations.">«Атмосфера, як у найкращих готелях світу. І результат завжди перевищує очікування.»</p><div class="review-author" data-i18n-en="— Yulia P.">— Юлія П.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The best thing I&#39;ve done for myself this past year. Every visit is a small celebration.">«Найкраще, що я зробила для себе за останній рік. Кожен візит — маленьке свято.»</p><div class="review-author" data-i18n-en="— Victoria N.">— Вікторія Н.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The specialists here are true professionals who love what they do. You can feel it in every detail.">«Майстри тут справжні професіонали, які люблять свою справу. Це відчувається в кожній деталі.»</p><div class="review-author" data-i18n-en="— Daryna L.">— Дарина Л.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I never thought a salon visit could feel this therapeutic.">«Ніколи не думала, що похід у салон може бути таким терапевтичним досвідом.»</p><div class="review-author" data-i18n-en="— Olga M.">— Ольга М.</div></div>
-        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="Sense Salon changed the way I think about self-care. It&#39;s now the part of my week I look forward to most.">«Sense Salon змінив моє уявлення про догляд за собою. Тепер це частина мого тижня, яку я найбільше чекаю.»</p><div class="review-author" data-i18n-en="— Kateryna R.">— Катерина Р.</div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="It&#39;s not just a salon, it&#39;s where I reset completely. Every detail — from the scent in the air to the therapist&#39;s touch — is considered down to the last degree.">«Це не просто салон, це місце, де я обнуляюся. Кожна деталь — від аромату в повітрі до дотиків майстра — продумана до абсолюту.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-olena.webp" width="200" height="200" alt="Олена В" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Olena V., 29">Олена В., 29</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I trust my hair only to the experts at Sense. They don&#39;t just listen to what you want — they seem to read your inner state.">«Довіряю своє волосся тільки експертам Sense. Вони не просто чують побажання, вони ніби зчитують твій внутрішній стан.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-maria.webp" width="200" height="200" alt="Марія С" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Maria S., 34">Марія С., 34</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I came for a consultation and stayed for good. A personal care plan was exactly what I&#39;d been missing.">«Прийшла на консультацію і залишилась назавжди. Персональний план догляду — це саме те, чого мені бракувало.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-anastasia.webp" width="200" height="200" alt="Анастасія К" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Anastasia K., 26">Анастасія К., 26</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The atmosphere rivals the world&#39;s finest hotels. And the results always exceed expectations.">«Атмосфера, як у найкращих готелях світу. І результат завжди перевищує очікування.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-yulia.webp" width="200" height="200" alt="Юлія П" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Yulia P., 41">Юлія П., 41</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The best thing I&#39;ve done for myself this past year. Every visit is a small celebration.">«Найкраще, що я зробила для себе за останній рік. Кожен візит — маленьке свято.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-victoria.webp" width="200" height="200" alt="Вікторія Н" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Victoria N., 31">Вікторія Н., 31</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="The specialists here are true professionals who love what they do. You can feel it in every detail.">«Майстри тут справжні професіонали, які люблять свою справу. Це відчувається в кожній деталі.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-daryna.webp" width="200" height="200" alt="Дарина Л" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Daryna L., 37">Дарина Л., 37</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="I never thought a salon visit could feel this therapeutic.">«Ніколи не думала, що похід у салон може бути таким терапевтичним досвідом.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-olga.webp" width="200" height="200" alt="Ольга М" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Olga M., 45">Ольга М., 45</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
+        <div class="review-card" aria-hidden="true"><p class="review-text" data-i18n-en="Sense Salon changed the way I think about self-care. It&#39;s now the part of my week I look forward to most.">«Sense Salon змінив моє уявлення про догляд за собою. Тепер це частина мого тижня, яку я найбільше чекаю.»</p><div class="review-meta"><img loading="lazy" decoding="async" src="./images/review-kateryna.webp" width="200" height="200" alt="Катерина Р" class="review-avatar"><div class="review-meta-text"><div class="review-author" data-i18n-en="Kateryna R., 24">Катерина Р., 24</div><div class="review-stars" aria-label="5 із 5"><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg><svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.8 7.1-.7z"/></svg></div></div></div></div>
     </div>
 </div>
     </section>
@@ -854,45 +818,94 @@
 
     <footer id="contacts" class="contacts">
         <div class="contacts-inner">
-            <div class="contacts-head">
-                <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Contacts">Контакти</span></div>
-                <h2 data-i18n-en="Book a Consultation">Запишіться на консультацію</h2>
-                <p data-i18n-en="Leave a request — our concierge will match you with a specialist and a convenient time. We respond within an hour on business days.">Залиште заявку — наш консьєрж підбере майстра та зручний час. Відповідаємо протягом години у робочий день.</p>
-            </div>
-
             <div class="contacts-grid">
-                <div class="contacts-brand">
-                    <img loading="lazy" decoding="async" src="./images/logo.png" width="2241" height="769" alt="Sense Salon Logo" class="footer-logo">
-                    <p data-i18n-en="A premium full-cycle beauty space. Hair, nails, face and body — with personal guidance.">Преміальний beauty-простір повного циклу. Волосся, нігті, обличчя та тіло — з персональним супроводом.</p>
-                    <div class="footer-cta">
-                        <a href="tel:+380990000000" class="btn-glass">+38 (099) 000 00 00</a>
-                        <button type="button" id="open-contact-modal" class="btn-glass btn-outline" data-i18n-en="Message Us">Написати</button>
+                <div class="contacts-left">
+                    <div class="contacts-head">
+                        <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Contacts">Контакти</span></div>
+                        <h2 data-i18n-en="Book a Consultation">Запишіться на консультацію</h2>
+                        <p data-i18n-en="Leave a request — our concierge will match you with a specialist and a convenient time. We respond within an hour on business days.">Залиште заявку — наш консьєрж підбере майстра та зручний час. Відповідаємо протягом години у робочий день.</p>
+                    </div>
+
+                    <div class="contacts-brand">
+                        <img loading="lazy" decoding="async" src="./images/logo.png" width="2241" height="769" alt="Sense Salon Logo" class="footer-logo">
+                        <p data-i18n-en="A premium full-cycle beauty space. Hair, nails, face and body — with personal guidance.">Преміальний beauty-простір повного циклу. Волосся, нігті, обличчя та тіло — з персональним супроводом.</p>
+                        <div class="footer-cta">
+                            <a href="tel:+380990000000" class="btn-glass">+38 (099) 000 00 00</a>
+                        </div>
+                    </div>
+
+                    <div class="contacts-links">
+                        <div class="fcol">
+                            <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Navigation">Навігація</span></div>
+                            <a href="#philosophy" data-i18n-en="Philosophy">Філософія</a>
+                            <a href="#services" data-i18n-en="Treatments">Напрямки</a>
+                            <a href="#portfolio" data-i18n-en="Portfolio">Портфоліо</a>
+                            <a href="#reviews" data-i18n-en="Impressions">Враження</a>
+                            <a href="#contacts" data-i18n-en="Contacts">Контакти</a>
+                        </div>
+
+                        <div class="fcol">
+                            <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Location">Локація</span></div>
+                            <address>
+                                <a href="https://maps.google.com/?q=вул.+Естетична,+1,+Київ" target="_blank" rel="noopener noreferrer" data-i18n-en="Kyiv, 1 Estetychna St.">м. Київ, вул. Естетична, 1</a>
+                            </address>
+                            <p class="hours-note" data-i18n-en="Mon&ndash;Sat &middot; 10:00 AM&ndash;8:00 PM">Пн–Сб · 10:00–20:00</p>
+                            <p class="hours-note" data-i18n-en="Sun &middot; by appointment">Нд · за записом</p>
+                        </div>
+
+                        <div class="fcol">
+                            <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Social">Соцмережі</span></div>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a href="https://t.me" target="_blank" rel="noopener noreferrer">Telegram</a>
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="fcol">
-                    <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Navigation">Навігація</span></div>
-                    <a href="#philosophy" data-i18n-en="Philosophy">Філософія</a>
-                    <a href="#services" data-i18n-en="Treatments">Напрямки</a>
-                    <a href="#portfolio" data-i18n-en="Portfolio">Портфоліо</a>
-                    <a href="#reviews" data-i18n-en="Impressions">Враження</a>
-                    <a href="#contacts" data-i18n-en="Contacts">Контакти</a>
-                </div>
+                <div class="contacts-form-panel" id="booking-form">
+                    <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Get in Touch">Зв'язок</span></div>
+                    <h3 data-i18n-en="Leave a Request">Залишіть заявку</h3>
+                    <p data-i18n-en="Choose the way that suits you best &mdash; our concierge will personally reach out through your preferred channel.">Оберіть зручний спосіб зв'язку — консьєрж особисто зв'яжеться з вами в обраний спосіб.</p>
 
-                <div class="fcol">
-                    <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Location">Локація</span></div>
-                    <address>
-                        <a href="https://maps.google.com/?q=вул.+Естетична,+1,+Київ" target="_blank" rel="noopener noreferrer" data-i18n-en="Kyiv, 1 Estetychna St.">м. Київ, вул. Естетична, 1</a>
-                    </address>
-                    <p class="hours-note" data-i18n-en="Mon&ndash;Sat &middot; 10:00 AM&ndash;8:00 PM">Пн–Сб · 10:00–20:00</p>
-                    <p class="hours-note" data-i18n-en="Sun &middot; by appointment">Нд · за записом</p>
-                </div>
+                    <form id="contact-form" novalidate>
+                        <div class="contact-toggle" role="radiogroup" aria-label="Спосіб зв'язку" data-i18n-en-aria-label="Contact method">
+                            <button type="button" class="contact-toggle-btn active" data-mode="call" data-i18n-en="Call Me">Подзвонити мені</button>
+                            <button type="button" class="contact-toggle-btn" data-mode="write" data-i18n-en="Message Me">Написати мені</button>
+                        </div>
 
-                <div class="fcol">
-                    <div class="fcol-label"><span class="accent-line"></span> <span data-i18n-en="Social">Соцмережі</span></div>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://t.me" target="_blank" rel="noopener noreferrer">Telegram</a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        <div class="contact-field">
+                            <label for="cf-name" data-i18n-en="Name">Ім'я</label>
+                            <input type="text" id="cf-name" name="name" required placeholder="Як до вас звертатися" data-i18n-en-placeholder="How should we address you">
+                        </div>
+
+                        <div class="contact-field">
+                            <label for="cf-contact" id="cf-contact-label">Номер телефону</label>
+                            <input type="tel" id="cf-contact" name="contact" required placeholder="+38 (0__) ___ __ __">
+                        </div>
+
+                        <div class="contact-field contact-channel" id="contact-channel-field" hidden>
+                            <label data-i18n-en="Preferred Messenger">Зручний месенджер</label>
+                            <div class="contact-channel-options">
+                                <button type="button" class="channel-chip active" data-channel="telegram">Telegram</button>
+                                <button type="button" class="channel-chip" data-channel="whatsapp">WhatsApp</button>
+                                <button type="button" class="channel-chip" data-channel="email">Email</button>
+                            </div>
+                        </div>
+
+                        <div class="contact-field">
+                            <label for="cf-note"><span data-i18n-en="Notes">Побажання</span> <span class="optional-tag" data-i18n-en="(optional)">(необов'язково)</span></label>
+                            <textarea id="cf-note" name="note" rows="2" placeholder="Напрямок, майстер, зручний час..." data-i18n-en-placeholder="Treatment, specialist, preferred time..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-glass contact-submit-btn" data-i18n-en="Send Request">Надіслати заявку</button>
+                    </form>
+
+                    <div class="contact-success" id="contact-success" hidden>
+                        <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Thank You">Дякуємо</span></div>
+                        <h3 data-i18n-en="Request Received">Заявку прийнято</h3>
+                        <p data-i18n-en="Our concierge will reach out shortly through your preferred channel.">Наш консьєрж зв'яжеться з вами найближчим часом у обраний спосіб.</p>
+                        <button type="button" class="btn-glass" id="contact-success-reset" data-i18n-en="Send Another Request">Залишити ще одну заявку</button>
+                    </div>
                 </div>
             </div>
 
@@ -906,61 +919,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- МОДАЛЬНЕ ВІКНО "ЗАЛИШИТИ ЗАЯВКУ" -->
-    <div class="service-modal-overlay contact-modal-overlay" id="contact-modal-overlay">
-        <div class="service-modal contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-            <button type="button" class="service-modal-close" id="contact-modal-close" aria-label="Закрити" data-i18n-en-aria-label="Close">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
-            </button>
-
-            <div class="contact-modal-body">
-                <form id="contact-form" novalidate>
-                    <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Get in Touch">Зв'язок</span></div>
-                    <h2 id="contact-modal-title" data-i18n-en="Leave a Request">Залишіть заявку</h2>
-                    <p class="service-modal-lede" style="margin-bottom: 28px;" data-i18n-en="Choose the way that suits you best &mdash; our concierge will personally reach out through your preferred channel.">Оберіть зручний спосіб зв'язку — консьєрж особисто зв'яжеться з вами в обраний спосіб.</p>
-
-                    <div class="contact-toggle" role="radiogroup" aria-label="Спосіб зв'язку" data-i18n-en-aria-label="Contact method">
-                        <button type="button" class="contact-toggle-btn active" data-mode="call" data-i18n-en="Call Me">Подзвонити мені</button>
-                        <button type="button" class="contact-toggle-btn" data-mode="write" data-i18n-en="Message Me">Написати мені</button>
-                    </div>
-
-                    <div class="contact-field">
-                        <label for="cf-name" data-i18n-en="Name">Ім'я</label>
-                        <input type="text" id="cf-name" name="name" required placeholder="Як до вас звертатися" data-i18n-en-placeholder="How should we address you">
-                    </div>
-
-                    <div class="contact-field">
-                        <label for="cf-contact" id="cf-contact-label">Номер телефону</label>
-                        <input type="tel" id="cf-contact" name="contact" required placeholder="+38 (0__) ___ __ __">
-                    </div>
-
-                    <div class="contact-field contact-channel" id="contact-channel-field" hidden>
-                        <label data-i18n-en="Preferred Messenger">Зручний месенджер</label>
-                        <div class="contact-channel-options">
-                            <button type="button" class="channel-chip active" data-channel="telegram">Telegram</button>
-                            <button type="button" class="channel-chip" data-channel="whatsapp">WhatsApp</button>
-                            <button type="button" class="channel-chip" data-channel="email">Email</button>
-                        </div>
-                    </div>
-
-                    <div class="contact-field">
-                        <label for="cf-note"><span data-i18n-en="Notes">Побажання</span> <span class="optional-tag" data-i18n-en="(optional)">(необов'язково)</span></label>
-                        <textarea id="cf-note" name="note" rows="2" placeholder="Напрямок, майстер, зручний час..." data-i18n-en-placeholder="Treatment, specialist, preferred time..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-glass contact-submit-btn" data-i18n-en="Send Request">Надіслати заявку</button>
-                </form>
-
-                <div class="contact-success" id="contact-success" hidden>
-                    <div class="accent-subtitle"><span class="accent-line"></span> <span data-i18n-en="Thank You">Дякуємо</span></div>
-                    <h2 data-i18n-en="Request Received">Заявку прийнято</h2>
-                    <p class="service-modal-lede" data-i18n-en="Our concierge will reach out shortly through your preferred channel.">Наш консьєрж зв'яжеться з вами найближчим часом у обраний спосіб.</p>
-                    <button type="button" class="btn-glass" id="contact-success-close" data-i18n-en="Close">Закрити</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- МОДАЛЬНЕ ВІКНО ЮРИДИЧНИХ ДОКУМЕНТІВ -->
     <div class="legal-modal-overlay" id="legal-modal-overlay">
@@ -1078,6 +1036,8 @@
 
                 if (typeof window.__refreshContactMode === 'function') window.__refreshContactMode();
                 if (typeof window.__refreshMenuToggleLabel === 'function') window.__refreshMenuToggleLabel();
+                
+                if (typeof window.__updateExpertCtaLang === 'function') window.__updateExpertCtaLang();
             }
 
             captureOriginals();
@@ -1153,11 +1113,60 @@
             });
         })();
         
+        const showcaseBtns = document.querySelectorAll('.showcase-menu-btn');
+        const showcaseContents = document.querySelectorAll('.showcase-content');
+
+        showcaseBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                showcaseBtns.forEach(b => b.classList.remove('active'));
+                showcaseContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
         const nextBtns = document.querySelectorAll('.slider-next-btn');
         const prevBtns = document.querySelectorAll('.slider-prev-btn');
         const slides = document.querySelectorAll('.team-slide');
         const portfolioSlides = document.querySelectorAll('.expert-portfolio-slide');
+        const expertCtaBtn = document.getElementById('expert-cta-btn');
+        const expertCtaBtnMobile = document.getElementById('expert-cta-btn-mobile');
         let currentSlide = 0;
+
+        const EXPERTS = [
+            { nameUk: 'Анна Шин', role: 'Art Director / Hair', ctaUk: 'Записатися до Анни', ctaEn: 'Book with Anna' },
+            { nameUk: 'Вікторія Рім', role: 'Top Stylist / Nails', ctaUk: 'Записатися до Вікторії', ctaEn: 'Book with Victoria' },
+            { nameUk: 'Марта Коен', role: 'Cosmetologist / Face', ctaUk: 'Записатися до Марти', ctaEn: 'Book with Marta' },
+            { nameUk: 'Максим Дорн', role: 'Art Director / Hair', ctaUk: 'Записатися до Максима', ctaEn: 'Book with Maxim' },
+            { nameUk: 'Софія Ланг', role: 'Top Stylist / Nails', ctaUk: 'Записатися до Софії', ctaEn: 'Book with Sofia' },
+            { nameUk: 'Ігор Крас', role: 'Massage Therapist', ctaUk: 'Записатися до Ігоря', ctaEn: 'Book with Igor' }
+        ];
+
+        function updateExpertCta(index) {
+            var data = EXPERTS[index];
+            if (!data) return;
+            var text = (window.__siteLang === 'en') ? data.ctaEn : data.ctaUk;
+            var note = 'Хочу записатися до ' + data.nameUk + ' — ' + data.role;
+
+            if (expertCtaBtn) {
+                expertCtaBtn.dataset.i18nUk = data.ctaUk;
+                expertCtaBtn.dataset.i18nEn = data.ctaEn;
+                expertCtaBtn.innerHTML = text;
+                expertCtaBtn.dataset.expertNote = note;
+            }
+            if (expertCtaBtnMobile) {
+                expertCtaBtnMobile.dataset.i18nUk = data.ctaUk;
+                expertCtaBtnMobile.dataset.i18nEn = data.ctaEn;
+                expertCtaBtnMobile.innerHTML = text;
+                expertCtaBtnMobile.dataset.expertNote = note;
+            }
+        }
+        
+        window.__updateExpertCtaLang = function() {
+            updateExpertCta(currentSlide);
+        };
 
         function goToExpertSlide(index) {
             if (!slides.length) return;
@@ -1166,16 +1175,28 @@
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             if (portfolioSlides[currentSlide]) portfolioSlides[currentSlide].classList.add('active');
+            updateExpertCta(currentSlide);
         }
+
+        updateExpertCta(currentSlide);
 
         nextBtns.forEach(function(btn) { btn.addEventListener('click', function() { goToExpertSlide(currentSlide + 1); }); });
         prevBtns.forEach(function(btn) { btn.addEventListener('click', function() { goToExpertSlide(currentSlide - 1); }); });
+
+        [expertCtaBtn, expertCtaBtnMobile].forEach(function(btn) {
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    var noteField = document.getElementById('cf-note');
+                    if (noteField) noteField.value = btn.dataset.expertNote || '';
+                });
+            }
+        });
         
         (function () {
             var overlay = document.getElementById('service-modal-overlay');
             if (!overlay) return;
             var closeBtn = overlay.querySelector('.service-modal-close');
-            var triggers = document.querySelectorAll('.service-modal-trigger');
+            var triggers = document.querySelectorAll('.glass-panel[data-service]');
             var panels = overlay.querySelectorAll('.service-modal-panel');
 
             function openModal(id) {
@@ -1193,6 +1214,12 @@
                     e.preventDefault();
                     openModal(btn.getAttribute('data-service'));
                 });
+                btn.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(btn.getAttribute('data-service'));
+                    }
+                });
             });
             closeBtn.addEventListener('click', closeModal);
             overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
@@ -1203,18 +1230,15 @@
         })();
         
         (function () {
-            var overlay = document.getElementById('contact-modal-overlay');
-            if (!overlay) return;
-            var openBtn = document.getElementById('open-contact-modal');
-            var closeBtn = document.getElementById('contact-modal-close');
             var form = document.getElementById('contact-form');
+            if (!form) return;
             var successPanel = document.getElementById('contact-success');
-            var successCloseBtn = document.getElementById('contact-success-close');
-            var toggleBtns = overlay.querySelectorAll('.contact-toggle-btn');
+            var successResetBtn = document.getElementById('contact-success-reset');
+            var toggleBtns = form.querySelectorAll('.contact-toggle-btn');
             var contactLabel = document.getElementById('cf-contact-label');
             var contactInput = document.getElementById('cf-contact');
             var channelField = document.getElementById('contact-channel-field');
-            var channelChips = overlay.querySelectorAll('.channel-chip');
+            var channelChips = form.querySelectorAll('.channel-chip');
 
             var currentMode = 'call';
 
@@ -1231,21 +1255,13 @@
             }
             window.__refreshContactMode = function () { setMode(currentMode); };
 
-            function openModal() {
-                overlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-            function closeModal() {
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-                setTimeout(function () {
-                    form.hidden = false;
-                    successPanel.hidden = true;
-                    form.reset();
-                    setMode('call');
-                    channelChips.forEach(function (c) { c.classList.remove('active'); });
-                    channelChips[0].classList.add('active');
-                }, 400);
+            function resetForm() {
+                form.hidden = false;
+                successPanel.hidden = true;
+                form.reset();
+                setMode('call');
+                channelChips.forEach(function (c) { c.classList.remove('active'); });
+                channelChips[0].classList.add('active');
             }
 
             toggleBtns.forEach(function (btn) {
@@ -1258,17 +1274,12 @@
                 });
             });
 
-            if (openBtn) openBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
-            closeBtn.addEventListener('click', closeModal);
-            overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
-            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
-
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
                 form.hidden = true;
                 successPanel.hidden = false;
             });
-            successCloseBtn.addEventListener('click', closeModal);
+            if (successResetBtn) successResetBtn.addEventListener('click', resetForm);
         })();
 
         (function () {
