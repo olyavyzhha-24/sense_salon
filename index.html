@@ -209,8 +209,7 @@
         .inline-arrow { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vertical-align: -2px; margin-left: 2px; }
 
         /* ВРАЖЕННЯ (Відгуки) */
-        .reviews-carousel { overflow: hidden; border-bottom: 1px solid var(--black); }
-        .reviews-track { display: flex; width: max-content; animation: scroll-reviews 50s linear infinite; }
+        .reviews-carousel { overflow: hidden; border-bottom: none; }        .reviews-track { display: flex; width: max-content; animation: scroll-reviews 50s linear infinite; }
         .reviews-track:hover { animation-play-state: paused; }
         .review-card { width: 480px; flex-shrink: 0; padding: 60px 50px; border-right: 1px solid var(--black); display: flex; flex-direction: column; justify-content: space-between; }
         @keyframes scroll-reviews { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -329,7 +328,7 @@
             .services-grid { grid-template-columns: 1fr; } .service-card { height: 450px; border-right: none; border-bottom: 1px solid var(--black); } .service-card:last-child { border-bottom: none; }
             .glass-panel { height: 80px; }
             
-            /* ЕКСПЕРТИ / ПОРТФОЛІО (З мобільною CTA) */
+            /* ЕКСПЕРТИ / ПОРТФОЛІО (З мобільною CTA і рожевими стрілками) */
             .showcase-section { flex-direction: column; min-height: auto; }
             .showcase-left { display: none; }
             .desktop-expert-cta { display: none !important; }
@@ -345,7 +344,9 @@
             .portfolio-mobile-label h3 { color: var(--white); font-family: var(--serif); font-size: 22px; letter-spacing: 0; margin: 0; }
             .portfolio-mobile-label .portfolio-role { color: rgba(255,255,255,0.8); font-family: var(--sans); font-size: 10.5px; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-top: 2px; }
 
-            .mobile-only-arrow { display: flex; position: absolute; top: 210px; transform: translateY(-50%); z-index: 15; width: 44px; height: 44px; color: var(--white); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
+            /* НОВІ РОЖЕВІ СТРІЛОЧКИ (великі і помітні) */
+            .mobile-only-arrow { display: flex; position: absolute; top: 210px; transform: translateY(-50%); z-index: 15; width: 60px; height: 60px; color: var(--pink-accent); filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+            .mobile-only-arrow svg { width: 36px; height: 36px; stroke-width: 2; }
             .mobile-only-arrow.slider-prev-btn { left: 6px; }
             .mobile-only-arrow.slider-next-btn { right: 6px; }
 
@@ -366,12 +367,16 @@
 
             /* ІНШІ БЛОКИ */
             .premium { height: auto; padding: 60px 20px; } .premium-glass-card { padding: 40px 20px; } .premium-glass-card h2 { font-size: 32px; }
-            .reviews-carousel { padding-bottom: 20px; }
+            
+            /* ВИПРАВЛЕНА КОРОБКА ВІДГУКІВ (лінія закрита) */
+            .reviews-carousel { padding-bottom: 0; margin-bottom: 0px; }
             .review-card { width: 320px; padding: 40px 24px; } .review-text { font-size: 16px; }
+            
             .contacts-inner { padding: 60px 20px 0; } .contacts-grid { grid-template-columns: 1fr; gap: 48px; padding-bottom: 48px; }
             .contacts-left { display: contents; } .contacts-head { order: 1; } .contacts-brand { order: 2; }
             .contacts-form-panel { order: 3; padding: 28px 20px 28px; } .contacts-links { order: 4; grid-template-columns: 1fr 1fr; gap: 28px; }
             .foot-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 32px; }
+            .contact-toggle-btn { font-size: 10px; padding: 12px 6px; }
             .legal-modal-overlay { padding: 20px; } .legal-modal { max-height: 85vh; height: auto; } .legal-modal-body { padding: 32px 22px; }
         }
     </style>
